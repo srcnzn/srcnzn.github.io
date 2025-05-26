@@ -11,9 +11,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // For GitHub Pages user site (username.github.io), no basePath needed
-  // basePath: "",
-  // assetPrefix: "",
+  // Tell Next.js where to find pages
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
+  // No basePath needed for user.github.io sites
 }
 
 export default nextConfig

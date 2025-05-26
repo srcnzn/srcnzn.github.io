@@ -1,0 +1,30 @@
+/* Create a CSS module file instead of a global CSS file */
+.autoHeight {
+    height: auto !important;
+    min-height: auto !important;
+  }
+  
+  .aboutSwiper {
+    height: auto !important;
+  }
+  
+  .aboutSlide {
+    height: auto !important;
+  }
+  
+  @media (max-width: 1024px) {
+    .autoHeight {
+      height: auto !important;
+      min-height: auto !important;
+    }
+  
+    .aboutSwiper {
+      height: auto !important;
+    }
+  
+    .aboutSlide {
+      height: auto !important;
+    }
+  }
+  
+  

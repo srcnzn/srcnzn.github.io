@@ -1,0 +1,45 @@
+.sectionTitle {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+  
+  .sectionTitle::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+  }
+  
+  .spaceTitle::after {
+    background-color: #3b82f6; /* blue-500 */
+  }
+  
+  .characterizationTitle::after {
+    background-color: #ef4444; /* red-500 */
+  }
+  
+  .experimentBox {
+    height: 250px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .experimentBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .experimentBox {
+      height: auto;
+      min-height: 200px;
+    }
+  }
+  
+  

@@ -1,10 +1,10 @@
-import { Navbar } from "@/components/Navbar"
-import Home from "@/components/Home"
-import About from "@/components/About"
-import Studies from "@/components/Studies"
-import Data from "@/components/Data"
-import Experimental from "@/components/Experimental"
-import Contact from "@/components/Contact"
+import { Navbar } from "../src/components/Navbar"
+import Home from "../src/components/Home"
+import About from "../src/components/About"
+import Studies from "../src/components/Studies"
+import Data from "../src/components/Data"
+import Experimental from "../src/components/Experimental"
+import Contact from "../src/components/Contact"
 
 export default function Page() {
   return (
@@ -36,7 +36,7 @@ export default function Page() {
         <Experimental />
       </section>
 
-      {/* Contact Section - NO section-container class to avoid min-height: 100vh */}
+      {/* Contact Section */}
       <section id="contact">
         <Contact />
       </section>

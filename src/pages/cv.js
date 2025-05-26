@@ -1,4 +1,4 @@
-import CV from "@/components/CV"
+import CV from "../src/components/CV"
 
 export default function CVPage() {
   return (
@@ -13,10 +13,10 @@ export default function CVPage() {
             Press <kbd className="bg-blue-200 px-1 rounded">Ctrl+P</kbd> (or{" "}
             <kbd className="bg-blue-200 px-1 rounded">Cmd+P</kbd> on Mac)
           </li>
-          <li>Select &quot;Save as PDF&quot; as the destination</li>
-          <li>Choose &quot;More settings&quot; and set margins to &quot;Minimum&quot;</li>
-          <li>Make sure &quot;Background graphics&quot; is checked</li>
-          <li>Click &quot;Save&quot;</li>
+          <li>Select "Save as PDF" as the destination</li>
+          <li>Choose "More settings" and set margins to "Minimum"</li>
+          <li>Make sure "Background graphics" is checked</li>
+          <li>Click "Save"</li>
         </ol>
       </div>
     </div>

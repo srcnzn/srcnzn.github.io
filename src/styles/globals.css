@@ -8,22 +8,32 @@
   --background-end-rgb: 0, 0, 0;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px; /* Ensure base font size */
+  scroll-behavior: smooth;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-}
-
-html {
-  scroll-behavior: smooth;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 .unified-layout {
   width: 100%;
   overflow-x: hidden;
   background-color: #000;
+  min-height: 100vh;
 }
 
 .section-container {
@@ -35,6 +45,7 @@ html {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  padding: 2rem 1rem;
 }
 
 .section-container + .section-container {
@@ -51,4 +62,17 @@ html {
 
 .tab-content {
   transition: all 0.3s ease;
+}
+
+/* Ensure proper scaling on all devices */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 18px;
+  }
 }

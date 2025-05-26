@@ -25,9 +25,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
-      - name: Build
-        run: npm run build
-        
+      - name: Build with verbose output
+        run: |
+          echo "Starting build..."
+          npm run build
+          echo "Build completed, checking output..."
+          ls -la out/
+          echo "Checking for index.html..."
+          ls -la out/index.html || echo "No index.html found!"
+          
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:

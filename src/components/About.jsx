@@ -24,11 +24,12 @@ export default function About() {
         {/* Profile and Bio Section */}
         <div className="mb-20">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl">
-            <div className="relative">
-              {/* Profile Picture - floats right and wraps with text */}
-              <div className="float-right w-[180px] ml-6 mb-6">
-                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl p-1">
-                  <div className="w-full h-[240px] bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center overflow-hidden">
+            {/* Mobile Layout - Stacked */}
+            <div className="block lg:hidden">
+              {/* Profile Card - Mobile */}
+              <div className="text-center mb-8">
+                <div className="w-32 h-40 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl p-1">
+                  <div className="w-full h-full bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center overflow-hidden">
                     <img
                       src="/profile-photo.png"
                       alt="Sercan Ozen"
@@ -42,39 +43,38 @@ export default function About() {
                       className="w-full h-full flex flex-col items-center justify-center text-white"
                       style={{ display: "none" }}
                     >
-                      <User size={32} className="mb-2" />
-                      <span className="text-sm">Profile Photo</span>
+                      <User size={24} className="mb-2" />
+                      <span className="text-xs">Profile Photo</span>
                     </div>
                   </div>
                 </div>
-                <div className="text-center mt-4">
-                  <h3 className="text-xl font-bold mb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-                    Sercan Ozen
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-2">Doctoral Researcher</p>
-                  <div className="space-y-1 text-xs text-gray-500">
-                    <div className="flex items-center justify-center">
-                      <GraduationCap size={12} className="mr-1 text-blue-500" />
-                      University of Potsdam
-                    </div>
-                    <div className="flex items-center justify-center">
-                      <Wrench size={12} className="mr-1 text-indigo-500" />
-                      Perovskite Solar Cells
-                    </div>
+
+                <h3 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                  Sercan Ozen
+                </h3>
+                <p className="text-gray-600 mb-3">Doctoral Researcher</p>
+                <div className="space-y-2 text-sm text-gray-500">
+                  <div className="flex items-center justify-center">
+                    <GraduationCap size={14} className="mr-2 text-blue-500" />
+                    University of Potsdam
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <Wrench size={14} className="mr-2 text-indigo-500" />
+                    Perovskite Solar Cells
                   </div>
                 </div>
               </div>
 
-              {/* Biography Text */}
+              {/* Biography Text - Mobile */}
               <div className="prose prose-lg max-w-none">
-                <p className="text-gray-700 leading-relaxed text-justify mb-6">
+                <p className="text-gray-700 leading-relaxed text-justify mb-4">
                   I am Sercan Ozen, a doctoral researcher at the University of Potsdam, focusing on the performance,
                   stability, and degradation mechanisms of all-perovskite solar cells in extreme environments. My
                   research investigates the effects of low-intensity low-temperature (LILT) conditions, thermal cycling,
                   radiation exposure, and fluctuating light intensities on the electrical and structural properties of
                   single-junction and multi-junction perovskite solar cells.
                 </p>
-                <p className="text-gray-700 leading-relaxed text-justify mb-6">
+                <p className="text-gray-700 leading-relaxed text-justify mb-4">
                   Through advanced characterization techniques and device simulations, I aim to understand charge
                   transport dynamics, interfacial resistances, and long-term material stability, contributing to the
                   feasibility of perovskite-based photovoltaics for space applications. I completed my Bachelor's and
@@ -88,9 +88,78 @@ export default function About() {
                   institute.
                 </p>
               </div>
+            </div>
 
-              {/* Clear float */}
-              <div className="clear-both"></div>
+            {/* Desktop Layout - Side by side with floating image */}
+            <div className="hidden lg:block">
+              <div className="relative">
+                {/* Profile Picture - floats right and wraps with text on desktop */}
+                <div className="float-right w-[180px] ml-6 mb-6">
+                  <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl p-1">
+                    <div className="w-full h-[240px] bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center overflow-hidden">
+                      <img
+                        src="/profile-photo.png"
+                        alt="Sercan Ozen"
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.target.style.display = "none"
+                          e.target.nextSibling.style.display = "flex"
+                        }}
+                      />
+                      <div
+                        className="w-full h-full flex flex-col items-center justify-center text-white"
+                        style={{ display: "none" }}
+                      >
+                        <User size={32} className="mb-2" />
+                        <span className="text-sm">Profile Photo</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-center mt-4">
+                    <h3 className="text-xl font-bold mb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                      Sercan Ozen
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-2">Doctoral Researcher</p>
+                    <div className="space-y-1 text-xs text-gray-500">
+                      <div className="flex items-center justify-center">
+                        <GraduationCap size={12} className="mr-1 text-blue-500" />
+                        University of Potsdam
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <Wrench size={12} className="mr-1 text-indigo-500" />
+                        Perovskite Solar Cells
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Biography Text - Desktop */}
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-gray-700 leading-relaxed text-justify mb-6">
+                    I am Sercan Ozen, a doctoral researcher at the University of Potsdam, focusing on the performance,
+                    stability, and degradation mechanisms of all-perovskite solar cells in extreme environments. My
+                    research investigates the effects of low-intensity low-temperature (LILT) conditions, thermal
+                    cycling, radiation exposure, and fluctuating light intensities on the electrical and structural
+                    properties of single-junction and multi-junction perovskite solar cells.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed text-justify mb-6">
+                    Through advanced characterization techniques and device simulations, I aim to understand charge
+                    transport dynamics, interfacial resistances, and long-term material stability, contributing to the
+                    feasibility of perovskite-based photovoltaics for space applications. I completed my Bachelor's and
+                    Master's degrees in Physics at the Izmir Institute of Technology, where I developed a strong
+                    interest in semiconductor physics, optoelectronic devices, and light-matter interactions.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed text-justify">
+                    Beyond my academic work, I have a strong interest in scientific coding, data analysis, and
+                    visualization, often integrating computational tools into my research. During my time as a research
+                    assistant, I played a key role in setting up optical laboratories and experimental setups for the
+                    institute.
+                  </p>
+                </div>
+
+                {/* Clear float */}
+                <div className="clear-both"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -227,31 +296,66 @@ export default function About() {
             </div>
           </div>
 
-          {/* SECOND ROW: Education | Key Publications */}
+          {/* SECOND ROW: Data Analysis + Visualization | Key Publications */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
-            {/* Education */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl">
-              <div className="flex items-center mb-6">
-                <div className="p-3 bg-green-100 rounded-full mr-4">
-                  <GraduationCap className="text-green-600" size={24} />
+            {/* Left Column: Data Analysis + Visualization stacked */}
+            <div className="flex flex-col space-y-4 h-full">
+              {/* Data Analysis */}
+              <div className="bg-gradient-to-br from-cyan-50 to-blue-50 backdrop-blur-sm rounded-2xl p-6 border border-cyan-200 shadow-xl flex-1 flex flex-col">
+                <div className="flex items-center mb-4">
+                  <div className="p-2 bg-cyan-100 rounded-full mr-3">
+                    <Code className="text-cyan-600" size={20} />
+                  </div>
+                  <h3 className="text-xl font-bold text-cyan-700">Data Analysis</h3>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800">Education</h3>
+
+                <div className="space-y-3 flex-1">
+                  {[
+                    { skill: "Python", level: 90, color: "bg-cyan-500" },
+                    { skill: "MATLAB", level: 85, color: "bg-blue-500" },
+                    { skill: "Origin", level: 90, color: "bg-teal-500" },
+                  ].map((item, index) => (
+                    <div key={index}>
+                      <div className="mb-1">
+                        <span className="text-gray-800 font-medium text-sm">{item.skill}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                          className={`${item.color} h-2 rounded-full transition-all duration-1000 ease-out`}
+                          style={{ width: `${item.level}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="space-y-4">
-                <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 shadow-sm">
-                  <h4 className="font-bold text-gray-800 mb-1">Ph.D | Physics</h4>
-                  <p className="text-sm text-gray-600">2023–Present | University of Potsdam</p>
+              {/* Visualization */}
+              <div className="bg-gradient-to-br from-purple-50 to-indigo-50 backdrop-blur-sm rounded-2xl p-6 border border-purple-200 shadow-xl flex-1 flex flex-col">
+                <div className="flex items-center mb-4">
+                  <div className="p-2 bg-purple-100 rounded-full mr-3">
+                    <Monitor className="text-purple-600" size={20} />
+                  </div>
+                  <h3 className="text-xl font-bold text-purple-700">Visualization</h3>
                 </div>
 
-                <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 shadow-sm">
-                  <h4 className="font-bold text-gray-800 mb-1">M.Sc | Photonics Science & Engineering</h4>
-                  <p className="text-sm text-gray-600">2020 | Izmir Institute of Technology</p>
-                </div>
-
-                <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 shadow-sm">
-                  <h4 className="font-bold text-gray-800 mb-1">B.Sc | Physics</h4>
-                  <p className="text-sm text-gray-600">2017 | Izmir Institute of Technology</p>
+                <div className="space-y-3 flex-1">
+                  {[
+                    { skill: "Blender", level: 60, color: "bg-purple-500" },
+                    { skill: "VESTA", level: 85, color: "bg-indigo-500" },
+                  ].map((item, index) => (
+                    <div key={index}>
+                      <div className="mb-1">
+                        <span className="text-gray-800 font-medium text-sm">{item.skill}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                          className={`${item.color} h-2 rounded-full transition-all duration-1000 ease-out`}
+                          style={{ width: `${item.level}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -299,70 +403,6 @@ export default function About() {
                     <p className="text-xs text-gray-500">[Authors]</p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* THIRD ROW: Data Analysis | Visualization (2 columns) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
-            {/* Data Analysis */}
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 backdrop-blur-sm rounded-2xl p-8 border border-cyan-200 shadow-xl">
-              <div className="flex items-center mb-6">
-                <div className="p-3 bg-cyan-100 rounded-full mr-4">
-                  <Code className="text-cyan-600" size={24} />
-                </div>
-                <h3 className="text-2xl font-bold text-cyan-700">Data Analysis</h3>
-              </div>
-
-              <div className="space-y-4">
-                {[
-                  { skill: "Python", level: 90, color: "bg-cyan-500" },
-                  { skill: "MATLAB", level: 85, color: "bg-blue-500" },
-                  { skill: "Origin", level: 75, color: "bg-teal-500" },
-                ].map((item, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-800 font-medium">{item.skill}</span>
-                      <span className="text-gray-600 text-sm">{item.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div
-                        className={`${item.color} h-2 rounded-full transition-all duration-1000 ease-out`}
-                        style={{ width: `${item.level}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Visualization */}
-            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 backdrop-blur-sm rounded-2xl p-8 border border-purple-200 shadow-xl">
-              <div className="flex items-center mb-6">
-                <div className="p-3 bg-purple-100 rounded-full mr-4">
-                  <Monitor className="text-purple-600" size={24} />
-                </div>
-                <h3 className="text-2xl font-bold text-purple-700">Visualization</h3>
-              </div>
-
-              <div className="space-y-4">
-                {[
-                  { skill: "Blender", level: 70, color: "bg-purple-500" },
-                  { skill: "VESTA", level: 60, color: "bg-indigo-500" },
-                ].map((item, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-800 font-medium">{item.skill}</span>
-                      <span className="text-gray-600 text-sm">{item.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div
-                        className={`${item.color} h-2 rounded-full transition-all duration-1000 ease-out`}
-                        style={{ width: `${item.level}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

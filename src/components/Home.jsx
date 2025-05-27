@@ -9,8 +9,8 @@ export default function Home() {
         </h1>
         <p className="text-xl md:text-2xl mb-8 text-gray-300">Doctoral Researcher in Physics</p>
         <p className="text-lg max-w-3xl mx-auto mb-10 text-gray-400">
-          Investigating perovskite solar cells for extreme environments and space applications, focusing on performance
-          stability and degradation mechanisms.
+          Exploring single- and multi-junction perovskite solar cells for space: from radiation hardness and LILT to
+          performance benchmarking and mechanical tests.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <button

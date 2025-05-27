@@ -945,7 +945,7 @@ export default function Experimental() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white py-20 relative overflow-hidden">
+    <div className="min-h-screen w-full bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white py-12 sm:py-20 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
@@ -953,7 +953,7 @@ export default function Experimental() {
         <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 w-full">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
@@ -992,7 +992,7 @@ export default function Experimental() {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {workflowSteps.map((step, index) => (
-              <div key={step.id} className="flex-shrink-0 w-80">
+              <div key={step.id} className="flex-shrink-0 w-72 sm:w-80">
                 <div
                   onClick={() => handleCardClick(step)}
                   className="bg-gradient-to-br from-slate-800/60 to-gray-800/60 backdrop-blur-sm rounded-2xl border border-slate-600/30 hover:border-slate-500/50 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl group shadow-xl cursor-pointer"
@@ -1072,7 +1072,7 @@ export default function Experimental() {
             className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
             onClick={handleModalBackdropClick}
           >
-            <div className="bg-gradient-to-br from-slate-800/95 to-gray-800/95 backdrop-blur-sm rounded-2xl border border-slate-600/30 w-full max-w-6xl max-h-[90vh] overflow-y-auto shadow-2xl">
+            <div className="bg-gradient-to-br from-slate-800/95 to-gray-800/95 backdrop-blur-sm rounded-2xl border border-slate-600/30 w-full max-w-6xl max-h-[90vh] overflow-y-auto shadow-2xl mx-4">
               <div className="p-8 relative">
                 <button
                   onClick={closeModal}

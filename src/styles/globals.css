@@ -8,47 +8,78 @@
   --background-end-rgb: 0, 0, 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.unified-layout {
   width: 100%;
-  overflow-x: hidden;
-  background-color: #000;
+  min-width: 100%;
 }
 
+/* Ensure all sections take full width */
 .section-container {
   min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100vw;
+  min-width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
+/* Remove any gaps between sections */
 .section-container + .section-container {
   margin-top: 0;
   border-top: none;
 }
 
-@media (max-width: 535px) {
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    min-width: 100%;
+  }
+
   .section-container {
-    min-height: auto;
-    padding: 80px 16px 40px;
+    width: 100vw;
+    min-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Ensure containers inside sections don't overflow */
+  .max-w-7xl {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .max-w-6xl {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .max-w-4xl {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
+/* Tab styles */
 .tab-content {
   transition: all 0.3s ease;
 }

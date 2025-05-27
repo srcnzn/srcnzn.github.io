@@ -12,7 +12,7 @@ export default function About() {
         <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-slate-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 w-full">
         {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600">
@@ -30,7 +30,7 @@ export default function About() {
                 <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl p-1">
                   <div className="w-full h-[240px] bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center overflow-hidden">
                     <img
-                      src="/images/profile-photo.png"
+                      src="/profile-photo.png"
                       alt="Sercan Ozen"
                       className="w-full h-full object-cover"
                       onError={(e) => {
@@ -98,7 +98,7 @@ export default function About() {
         {/* Skills & Expertise Section - 3 Row Layout */}
         <div className="space-y-8">
           {/* FIRST ROW: Experience | Skills & Expertise (2 columns) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
             {/* Experience - Clean Timeline */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl">
               <div className="flex items-center mb-6">
@@ -150,7 +150,7 @@ export default function About() {
                   {/* Experience 4 - Internship */}
                   <div className="relative pl-10">
                     <div className="absolute left-2.5 top-1 w-3 h-3 bg-blue-200 rounded-full"></div>
-                    <h4 className="font-bold text-gray-800 mb-1">Intern</h4>
+                    <h4 className="font-bold text-gray-800 mb-1">Engineering Intern</h4>
                     <p className="text-sm text-gray-600 mb-2">2015–2016 | DVLX R&D</p>
                     <p className="text-sm text-gray-700">
                       Developed modular electric bicycle conversion systems, including battery pack assembly with spot
@@ -228,7 +228,7 @@ export default function About() {
           </div>
 
           {/* SECOND ROW: Education | Key Publications */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {/* Education */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl">
               <div className="flex items-center mb-6">
@@ -280,23 +280,23 @@ export default function About() {
                 <div className="space-y-4 mb-6">
                   {/* Publication 1 */}
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 border-l-4 border-l-amber-400 shadow-sm">
-                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">Moon photovoltaics utilizing lunar regolith and halide perovskites</h4>
-                    <p className="text-xs mb-1 text-gray-600">Device, 2025</p>
-                    <p className="text-xs text-gray-500">JM Cuervo-Ortiz, JCG Palomares, S Ozen, M Härtel, S Sarisozen, ...</p>
+                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">[Publication Title 1]</h4>
+                    <p className="text-xs mb-1 text-gray-600">[Journal Name], [Year]</p>
+                    <p className="text-xs text-gray-500">[Authors]</p>
                   </div>
 
                   {/* Publication 2 */}
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 border-l-4 border-l-amber-400 shadow-sm">
-                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">Methylammonium-free co-evaporated perovskite absorbers with high radiation and UV tolerance: an option for in-space manufacturing of space-PV?</h4>
-                    <p className="text-xs mb-1 text-gray-600">RSC advances, 2023</p>
-                    <p className="text-xs text-gray-500">F Lang, YH Chiang, K Frohna, S Ozen, HC Neitzert, A Denker, ...</p>
+                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">[Publication Title 2]</h4>
+                    <p className="text-xs mb-1 text-gray-600">[Journal Name], [Year]</p>
+                    <p className="text-xs text-gray-500">[Authors]</p>
                   </div>
 
                   {/* Publication 3 */}
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 border-l-4 border-l-amber-400 shadow-sm">
-                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">Gd3+-Doped α-CsPbI3 Nanocrystals with Better Phase Stability and Optical Properties</h4>
-                    <p className="text-xs mb-1 text-gray-600">The journal of physical chemistry C, 2019</p>
-                    <p className="text-xs text-gray-500">CM Guvenc, Y Yalcinkaya, S Ozen, H Sahin, MM Demir</p>
+                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">[Publication Title 3]</h4>
+                    <p className="text-xs mb-1 text-gray-600">[Journal Name], [Year]</p>
+                    <p className="text-xs text-gray-500">[Authors]</p>
                   </div>
                 </div>
               </div>
@@ -304,7 +304,7 @@ export default function About() {
           </div>
 
           {/* THIRD ROW: Data Analysis | Visualization (2 columns) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
             {/* Data Analysis */}
             <div className="bg-gradient-to-br from-cyan-50 to-blue-50 backdrop-blur-sm rounded-2xl p-8 border border-cyan-200 shadow-xl">
               <div className="flex items-center mb-6">

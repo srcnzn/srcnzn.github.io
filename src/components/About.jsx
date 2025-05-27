@@ -374,33 +374,49 @@ export default function About() {
                     href="https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 group shadow-lg text-sm"
+                    className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white py-1 px-2 sm:py-2 sm:px-4 rounded-lg font-medium transition-all duration-300 flex items-center gap-1 sm:gap-2 group shadow-lg text-xs sm:text-sm"
                   >
-                    See All
-                    <ExternalLink size={14} className="group-hover:translate-x-1 transition-transform" />
+                    <span className="hidden sm:inline">See All</span>
+                    <span className="sm:hidden">More</span>
+                    <ExternalLink size={12} className="sm:hidden group-hover:translate-x-1 transition-transform" />
+                    <ExternalLink
+                      size={14}
+                      className="hidden sm:inline group-hover:translate-x-1 transition-transform"
+                    />
                   </a>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   {/* Publication 1 */}
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 border-l-4 border-l-amber-400 shadow-sm">
-                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">[Publication Title 1]</h4>
-                    <p className="text-xs mb-1 text-gray-600">[Journal Name], [Year]</p>
-                    <p className="text-xs text-gray-500">[Authors]</p>
+                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">
+                      Moon photovoltaics utilizing lunar regolith and halide perovskites
+                    </h4>
+                    <p className="text-xs mb-1 text-gray-600">Device, 2024</p>
+                    <p className="text-xs text-gray-500">
+                      JM Cuervo-Ortiz, JCG Palomares, S Ozen, M Härtel, S Sarisozen, ...
+                    </p>
                   </div>
 
                   {/* Publication 2 */}
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 border-l-4 border-l-amber-400 shadow-sm">
-                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">[Publication Title 2]</h4>
-                    <p className="text-xs mb-1 text-gray-600">[Journal Name], [Year]</p>
-                    <p className="text-xs text-gray-500">[Authors]</p>
+                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">
+                      Mitigating Mobile‐Ion‐Induced Instabilities and Performance Losses in 2D Passivated Perovskite
+                      Solar Cells
+                    </h4>
+                    <p className="text-xs mb-1 text-gray-600">Advanced Materials, 2025</p>
+                    <p className="text-xs text-gray-500">
+                      BA Seid, S Ozen, AF Castro‐Méndez, D Neher, M Stolterfoht, F Lang
+                    </p>
                   </div>
 
                   {/* Publication 3 */}
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 border-l-4 border-l-amber-400 shadow-sm">
-                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">[Publication Title 3]</h4>
-                    <p className="text-xs mb-1 text-gray-600">[Journal Name], [Year]</p>
-                    <p className="text-xs text-gray-500">[Authors]</p>
+                    <h4 className="font-bold text-gray-800 mb-2 leading-tight text-sm">
+                      Gd³⁺-Doped α-CsPbI₃ Nanocrystals with Better Phase Stability and Optical Properties
+                    </h4>
+                    <p className="text-xs mb-1 text-gray-600">The Journal of Physical Chemistry C, 2019</p>
+                    <p className="text-xs text-gray-500">CM Guvenc, Y Yalcinkaya, S Ozen, H Sahin, MM Demir</p>
                   </div>
                 </div>
               </div>

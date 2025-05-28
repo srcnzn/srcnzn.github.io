@@ -1,11 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { X, Download, Star, Users, Zap, Shield } from "lucide-react" // If you've installed lucide-react
+import { X, Star, Users, Zap, Shield } from "lucide-react" // If you've installed lucide-react
 
 export default function Data() {
   const [selectedTool, setSelectedTool] = useState(null)
-  const [selectedPlan, setSelectedPlan] = useState(null)
 
   // Featured tools with more marketing-focused descriptions
   const featuredTools = [
@@ -162,63 +161,12 @@ export default function Data() {
     },
   ]
 
-  // Donation/pricing tiers
-  const pricingTiers = [
-    {
-      id: "basic",
-      name: "Basic Access",
-      price: "€5",
-      description: "Access to individual tools with basic features",
-      features: ["Download individual tools", "Basic documentation", "Community support", "Monthly updates"],
-      recommended: false,
-      buttonText: "Get Started",
-    },
-    {
-      id: "researcher",
-      name: "Researcher",
-      price: "€15",
-      description: "Full access to all tools with advanced features",
-      features: [
-        "Access to ALL tools",
-        "Comprehensive documentation",
-        "Priority email support",
-        "Advanced features unlocked",
-        "Regular updates",
-      ],
-      recommended: true,
-      buttonText: "Best Value",
-    },
-    {
-      id: "lab",
-      name: "Research Lab",
-      price: "€30",
-      description: "Multi-user license for research groups",
-      features: [
-        "5-user license",
-        "All advanced features",
-        "Priority support",
-        "Custom tool modifications",
-        "Implementation assistance",
-        "Acknowledgment in publications",
-      ],
-      recommended: false,
-      buttonText: "Upgrade Lab",
-    },
-  ]
-
   const handleToolClick = (tool) => {
     setSelectedTool(tool)
   }
 
   const closeModal = () => {
     setSelectedTool(null)
-  }
-
-  const handlePlanSelect = (plan) => {
-    setSelectedPlan(plan)
-    // Here you would typically redirect to a payment/donation page
-    // For now, we'll just show an alert
-    alert(`Thank you for selecting the ${plan.name} plan! This would redirect to a payment page.`)
   }
 
   return (
@@ -231,7 +179,7 @@ export default function Data() {
         </p>
         <div className="mt-8 flex justify-center">
           <button
-            onClick={() => document.getElementById("pricing").scrollIntoView({ behavior: "smooth" })}
+            onClick={() => document.getElementById("tools").scrollIntoView({ behavior: "smooth" })}
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium mx-2 transition-all duration-300"
           >
             Get Access
@@ -375,76 +323,6 @@ export default function Data() {
         </div>
       </div>
 
-      {/* Pricing/Donation Section */}
-      <div id="pricing" className="mb-20 scroll-mt-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white">Support This Research</h2>
-          <p className="text-gray-400 mt-2">Your contribution helps maintain and improve these tools</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pricingTiers.map((plan) => (
-            <div
-              key={plan.id}
-              className={`bg-gray-800 rounded-xl border ${
-                plan.recommended ? "border-blue-500 ring-2 ring-blue-500 ring-opacity-50" : "border-gray-700"
-              } p-8 flex flex-col relative`}
-            >
-              {plan.recommended && (
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                  RECOMMENDED
-                </div>
-              )}
-
-              <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
-              <div className="mb-4">
-                <span className="text-3xl font-bold text-white">{plan.price}</span>
-                <span className="text-gray-400"> one-time donation</span>
-              </div>
-              <p className="text-gray-300 mb-6">{plan.description}</p>
-
-              <ul className="space-y-3 mb-8 flex-grow">
-                {plan.features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg
-                      className="h-5 w-5 text-blue-500 mr-2 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-gray-300">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <button
-                onClick={() => handlePlanSelect(plan)}
-                className={`w-full py-3 rounded-lg font-medium transition-all duration-300 ${
-                  plan.recommended
-                    ? "bg-blue-600 hover:bg-blue-700 text-white"
-                    : "bg-gray-700 hover:bg-gray-600 text-white"
-                }`}
-              >
-                {plan.buttonText}
-              </button>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-8 text-center text-gray-400">
-          <p>All donations directly support ongoing research and tool development.</p>
-          <p className="mt-2">
-            For academic collaborations or custom tool development, please{" "}
-            <a href="#" className="text-blue-400 hover:underline">
-              contact me
-            </a>
-            .
-          </p>
-        </div>
-      </div>
-
       {/* Tool Detail Modal */}
       {selectedTool && (
         <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4 animate-fade-in">
@@ -494,16 +372,6 @@ export default function Data() {
                           .replace(/<\/li>\n/g, "</li></ul>"),
                       }}
                     />
-                  </div>
-
-                  <div className="mt-8">
-                    <button
-                      onClick={() => document.getElementById("pricing").scrollIntoView({ behavior: "smooth" })}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium flex items-center"
-                    >
-                      <Download size={18} className="mr-2" />
-                      Get Access to This Tool
-                    </button>
                   </div>
                 </div>
               </div>

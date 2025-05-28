@@ -296,70 +296,8 @@ export default function About() {
             </div>
           </div>
 
-          {/* SECOND ROW: Data Analysis + Visualization | Key Publications */}
+          {/* SECOND ROW: Key Publications | Data Analysis + Visualization */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
-            {/* Left Column: Data Analysis + Visualization stacked */}
-            <div className="flex flex-col space-y-4 h-full">
-              {/* Data Analysis */}
-              <div className="bg-gradient-to-br from-cyan-50 to-blue-50 backdrop-blur-sm rounded-2xl p-6 border border-cyan-200 shadow-xl flex-1 flex flex-col">
-                <div className="flex items-center mb-4">
-                  <div className="p-2 bg-cyan-100 rounded-full mr-3">
-                    <Code className="text-cyan-600" size={20} />
-                  </div>
-                  <h3 className="text-xl font-bold text-cyan-700">Data Analysis</h3>
-                </div>
-
-                <div className="space-y-3 flex-1">
-                  {[
-                    { skill: "Python", level: 90, color: "bg-cyan-500" },
-                    { skill: "MATLAB", level: 85, color: "bg-blue-500" },
-                    { skill: "Origin", level: 90, color: "bg-teal-500" },
-                  ].map((item, index) => (
-                    <div key={index}>
-                      <div className="mb-1">
-                        <span className="text-gray-800 font-medium text-sm">{item.skill}</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div
-                          className={`${item.color} h-2 rounded-full transition-all duration-1000 ease-out`}
-                          style={{ width: `${item.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Visualization */}
-              <div className="bg-gradient-to-br from-purple-50 to-indigo-50 backdrop-blur-sm rounded-2xl p-6 border border-purple-200 shadow-xl flex-1 flex flex-col">
-                <div className="flex items-center mb-4">
-                  <div className="p-2 bg-purple-100 rounded-full mr-3">
-                    <Monitor className="text-purple-600" size={20} />
-                  </div>
-                  <h3 className="text-xl font-bold text-purple-700">Visualization</h3>
-                </div>
-
-                <div className="space-y-3 flex-1">
-                  {[
-                    { skill: "Blender", level: 60, color: "bg-purple-500" },
-                    { skill: "VESTA", level: 85, color: "bg-indigo-500" },
-                  ].map((item, index) => (
-                    <div key={index}>
-                      <div className="mb-1">
-                        <span className="text-gray-800 font-medium text-sm">{item.skill}</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div
-                          className={`${item.color} h-2 rounded-full transition-all duration-1000 ease-out`}
-                          style={{ width: `${item.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
             {/* Key Publications - Spans 2 columns */}
             <div className="lg:col-span-2">
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl">
@@ -418,6 +356,68 @@ export default function About() {
                     <p className="text-xs mb-1 text-gray-600">The Journal of Physical Chemistry C, 2019</p>
                     <p className="text-xs text-gray-500">CM Guvenc, Y Yalcinkaya, S Ozen, H Sahin, MM Demir</p>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Data Analysis + Visualization stacked */}
+            <div className="flex flex-col space-y-4 h-full">
+              {/* Data Analysis */}
+              <div className="bg-gradient-to-br from-cyan-50 to-blue-50 backdrop-blur-sm rounded-2xl p-6 border border-cyan-200 shadow-xl flex-1 flex flex-col">
+                <div className="flex items-center mb-4">
+                  <div className="p-2 bg-cyan-100 rounded-full mr-3">
+                    <Code className="text-cyan-600" size={20} />
+                  </div>
+                  <h3 className="text-xl font-bold text-cyan-700">Data Analysis</h3>
+                </div>
+
+                <div className="space-y-3 flex-1">
+                  {[
+                    { skill: "Python", level: 90, color: "bg-cyan-500" },
+                    { skill: "MATLAB", level: 85, color: "bg-blue-500" },
+                    { skill: "Origin", level: 90, color: "bg-teal-500" },
+                  ].map((item, index) => (
+                    <div key={index}>
+                      <div className="mb-1">
+                        <span className="text-gray-800 font-medium text-sm">{item.skill}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                          className={`${item.color} h-2 rounded-full transition-all duration-1000 ease-out`}
+                          style={{ width: `${item.level}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Visualization */}
+              <div className="bg-gradient-to-br from-purple-50 to-indigo-50 backdrop-blur-sm rounded-2xl p-6 border border-purple-200 shadow-xl flex-1 flex flex-col">
+                <div className="flex items-center mb-4">
+                  <div className="p-2 bg-purple-100 rounded-full mr-3">
+                    <Monitor className="text-purple-600" size={20} />
+                  </div>
+                  <h3 className="text-xl font-bold text-purple-700">Visualization</h3>
+                </div>
+
+                <div className="space-y-3 flex-1">
+                  {[
+                    { skill: "Blender", level: 60, color: "bg-purple-500" },
+                    { skill: "VESTA", level: 85, color: "bg-indigo-500" },
+                  ].map((item, index) => (
+                    <div key={index}>
+                      <div className="mb-1">
+                        <span className="text-gray-800 font-medium text-sm">{item.skill}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                          className={`${item.color} h-2 rounded-full transition-all duration-1000 ease-out`}
+                          style={{ width: `${item.level}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

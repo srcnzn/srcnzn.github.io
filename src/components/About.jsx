@@ -166,71 +166,8 @@ export default function About() {
 
         {/* Skills & Expertise Section - 3 Row Layout */}
         <div className="space-y-8">
-          {/* FIRST ROW: Experience | Skills & Expertise (2 columns) */}
+          {/* FIRST ROW: Skills & Expertise | Experience (2 columns) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
-            {/* Experience - Clean Timeline */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl">
-              <div className="flex items-center mb-6">
-                <div className="p-3 bg-blue-100 rounded-full mr-4">
-                  <Zap className="text-blue-600" size={24} />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800">Experience</h3>
-              </div>
-
-              <div className="relative">
-                {/* Straight timeline line */}
-                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-300"></div>
-
-                <div className="space-y-8">
-                  {/* Experience 1 */}
-                  <div className="relative pl-10">
-                    <div className="absolute left-2.5 top-1 w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <h4 className="font-bold text-gray-800 mb-1">Doctoral Researcher</h4>
-                    <p className="text-sm text-gray-600 mb-2">2023–Present | University of Potsdam</p>
-                    <p className="text-sm text-gray-700">
-                      Conducting research on perovskite solar cells (PSCs), including single-junction (SJ), tandem (2J),
-                      and triple-junction (3J) architectures. Focused on performance stability and environmental
-                      resilience for space applications.
-                    </p>
-                  </div>
-
-                  {/* Experience 2 */}
-                  <div className="relative pl-10">
-                    <div className="absolute left-2.5 top-1 w-3 h-3 bg-blue-400 rounded-full"></div>
-                    <h4 className="font-bold text-gray-800 mb-1">Research Assistant</h4>
-                    <p className="text-sm text-gray-600 mb-2">2018–2023 | Izmir Institute of Technology</p>
-                    <p className="text-sm text-gray-700">
-                      Government-funded position obtained through competitive exam. Assisted in teaching and laboratory
-                      courses. Built and configured optical laboratory setups.
-                    </p>
-                  </div>
-
-                  {/* Experience 3 */}
-                  <div className="relative pl-10">
-                    <div className="absolute left-2.5 top-1 w-3 h-3 bg-blue-300 rounded-full"></div>
-                    <h4 className="font-bold text-gray-800 mb-1">Graduate Researcher</h4>
-                    <p className="text-sm text-gray-600 mb-2">2017–2020 | CENT Research Group</p>
-                    <p className="text-sm text-gray-700">
-                      Synthesis, doping, and investigation of doping-originated changes in the optical and electronic
-                      properties of perovskites.
-                    </p>
-                  </div>
-
-                  {/* Experience 4 - Internship */}
-                  <div className="relative pl-10">
-                    <div className="absolute left-2.5 top-1 w-3 h-3 bg-blue-200 rounded-full"></div>
-                    <h4 className="font-bold text-gray-800 mb-1">Engineering Intern</h4>
-                    <p className="text-sm text-gray-600 mb-2">2015–2016 | DVLX R&D</p>
-                    <p className="text-sm text-gray-700">
-                      Developed modular electric bicycle conversion systems, including battery pack assembly with spot
-                      welding techniques, battery holder design, component research, and speed controller programming
-                      for plug-and-play e-bike solutions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             {/* Skills & Expertise */}
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 backdrop-blur-sm rounded-2xl p-8 border border-blue-200 shadow-xl">
               <div className="flex items-center mb-6">
@@ -291,6 +228,69 @@ export default function About() {
                     <li>• X-ray diffraction (XRD, GI-XRD, GIWAXS)</li>
                     <li>• Scanning electron microscopy (SEM)</li>
                   </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Experience - Clean Timeline */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl">
+              <div className="flex items-center mb-6">
+                <div className="p-3 bg-blue-100 rounded-full mr-4">
+                  <Zap className="text-blue-600" size={24} />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800">Experience</h3>
+              </div>
+
+              <div className="relative">
+                {/* Straight timeline line */}
+                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-300"></div>
+
+                <div className="space-y-8">
+                  {/* Experience 1 */}
+                  <div className="relative pl-10">
+                    <div className="absolute left-2.5 top-1 w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <h4 className="font-bold text-gray-800 mb-1">Doctoral Researcher</h4>
+                    <p className="text-sm text-gray-600 mb-2">2023–Present | University of Potsdam</p>
+                    <p className="text-sm text-gray-700">
+                      Conducting research on perovskite solar cells (PSCs), including single-junction (SJ), tandem (2J),
+                      and triple-junction (3J) architectures. Focused on performance stability and environmental
+                      resilience for space applications.
+                    </p>
+                  </div>
+
+                  {/* Experience 2 */}
+                  <div className="relative pl-10">
+                    <div className="absolute left-2.5 top-1 w-3 h-3 bg-blue-400 rounded-full"></div>
+                    <h4 className="font-bold text-gray-800 mb-1">Research Assistant</h4>
+                    <p className="text-sm text-gray-600 mb-2">2018–2023 | Izmir Institute of Technology</p>
+                    <p className="text-sm text-gray-700">
+                      Government-funded position obtained through competitive exam. Assisted in teaching and laboratory
+                      courses. Built and configured optical laboratory setups.
+                    </p>
+                  </div>
+
+                  {/* Experience 3 */}
+                  <div className="relative pl-10">
+                    <div className="absolute left-2.5 top-1 w-3 h-3 bg-blue-300 rounded-full"></div>
+                    <h4 className="font-bold text-gray-800 mb-1">Graduate Researcher</h4>
+                    <p className="text-sm text-gray-600 mb-2">2017–2020 | CENT Research Group</p>
+                    <p className="text-sm text-gray-700">
+                      Synthesis, doping, and investigation of doping-originated changes in the optical and electronic
+                      properties of perovskites.
+                    </p>
+                  </div>
+
+                  {/* Experience 4 - Internship */}
+                  <div className="relative pl-10">
+                    <div className="absolute left-2.5 top-1 w-3 h-3 bg-blue-200 rounded-full"></div>
+                    <h4 className="font-bold text-gray-800 mb-1">Engineering Intern</h4>
+                    <p className="text-sm text-gray-600 mb-2">2015–2016 | DVLX R&D</p>
+                    <p className="text-sm text-gray-700">
+                      Developed modular electric bicycle conversion systems, including battery pack assembly with spot
+                      welding techniques, battery holder design, component research, and speed controller programming
+                      for plug-and-play e-bike solutions.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

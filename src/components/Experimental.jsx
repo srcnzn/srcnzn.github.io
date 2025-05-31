@@ -39,7 +39,7 @@ export default function Experimental() {
       category: "Initial Assessment",
       description: "Assess baseline device performance under AM1.5G and AM0",
       icon: <Target size={40} className="text-blue-400" />,
-      image: "/placeholder.svg?height=200&width=300&query=solar+cell+JV+measurement+setup",
+      image: "/placeholder.svg?height=200&width=300",
       techniques: [
         "J-V under AM1.5G / AM0",
         "EQE (subcell-resolved)",
@@ -56,7 +56,7 @@ export default function Experimental() {
       category: "Loss Analysis",
       description: "Quantify non-radiative losses and identify recombination pathways",
       icon: <Eye size={40} className="text-purple-400" />,
-      image: "/placeholder.svg?height=200&width=300&query=photoluminescence+spectroscopy+setup",
+      image: "/placeholder.svg?height=200&width=300",
       techniques: [
         "Absolute PLQY measurements",
         "Intensity-dependent PLQY",
@@ -73,7 +73,7 @@ export default function Experimental() {
       category: "Electrical Validation",
       description: "Validate recombination analysis under electrical injection",
       icon: <Activity size={40} className="text-green-400" />,
-      image: "/placeholder.svg?height=200&width=300&query=electroluminescence+measurement+device",
+      image: "/placeholder.svg?height=200&width=300",
       techniques: [
         "Electroluminescence spectroscopy",
         "Injection-dependent ELQY",
@@ -90,7 +90,7 @@ export default function Experimental() {
       category: "Durability Assessment",
       description: "Evaluate performance retention under operational and extreme conditions",
       icon: <Shield size={40} className="text-orange-400" />,
-      image: "/placeholder.svg?height=200&width=300&query=environmental+testing+chamber+solar+cells",
+      image: "/placeholder.svg?height=200&width=300",
       techniques: [
         "Maximum power point tracking",
         "Cryogenic/LILT evaluation",
@@ -107,7 +107,7 @@ export default function Experimental() {
       category: "Root Cause Analysis",
       description: "Correlate performance changes with structural evolution",
       icon: <Layers size={40} className="text-red-400" />,
-      image: "/placeholder.svg?height=200&width=300&query=GIWAXS+diffraction+analysis+setup",
+      image: "/placeholder.svg?height=200&width=300",
       techniques: [
         "GIWAXS/GI-XRD analysis",
         "SEM morphological characterization",
@@ -179,7 +179,7 @@ export default function Experimental() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <img
-                  src="/placeholder.svg?height=300&width=400&query=AM0+AM1.5G+solar+spectra+comparison+plot"
+                  src="/placeholder.svg?height=300&width=400"
                   alt="AM0 vs AM1.5G Solar Spectra"
                   className="w-full rounded-lg shadow-lg"
                 />
@@ -234,7 +234,7 @@ export default function Experimental() {
               </div>
               <div>
                 <img
-                  src="/placeholder.svg?height=300&width=400&query=JV+curve+comparison+AM0+AM1.5G+solar+cell+theory"
+                  src="/placeholder.svg?height=300&width=400"
                   alt="J-V Curves under AM0 and AM1.5G"
                   className="w-full rounded-lg shadow-lg"
                 />
@@ -258,7 +258,7 @@ export default function Experimental() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <img
-                  src="/placeholder.svg?height=250&width=350&query=single+junction+perovskite+EQE+spectrum+theory"
+                  src="/placeholder.svg?height=250&width=350"
                   alt="Single Junction EQE"
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -273,7 +273,7 @@ export default function Experimental() {
               </div>
               <div>
                 <img
-                  src="/placeholder.svg?height=250&width=350&query=tandem+perovskite+silicon+EQE+subcell+resolved+theory"
+                  src="/placeholder.svg?height=250&width=350"
                   alt="Tandem EQE"
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -323,7 +323,7 @@ export default function Experimental() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <img
-                  src="/placeholder.svg?height=300&width=400&query=photoluminescence+quantum+yield+measurement+setup"
+                  src="/placeholder.svg?height=300&width=400"
                   alt="PLQY Measurement Setup"
                   className="w-full rounded-lg shadow-lg"
                 />
@@ -377,7 +377,7 @@ export default function Experimental() {
               </div>
               <div>
                 <img
-                  src="/placeholder.svg?height=300&width=400&query=PLQY+vs+excitation+intensity+recombination+mechanisms"
+                  src="/placeholder.svg?height=300&width=400"
                   alt="Intensity-dependent PLQY"
                   className="w-full rounded-lg shadow-lg"
                 />
@@ -401,7 +401,7 @@ export default function Experimental() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <img
-                  src="/placeholder.svg?height=250&width=350&query=pseudo+JV+curve+from+photoluminescence+data"
+                  src="/placeholder.svg?height=250&width=350"
                   alt="Pseudo-JV from PL"
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -417,7 +417,7 @@ export default function Experimental() {
               </div>
               <div>
                 <img
-                  src="/placeholder.svg?height=250&width=350&query=trap+density+energy+distribution+from+PL+analysis"
+                  src="/placeholder.svg?height=250&width=350"
                   alt="Trap Analysis"
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -483,7 +483,7 @@ export default function Experimental() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <img
-                  src="/placeholder.svg?height=300&width=400&query=electroluminescence+measurement+setup+solar+cell"
+                  src="/placeholder.svg?height=300&width=400"
                   alt="EL Measurement Setup"
                   className="w-full rounded-lg shadow-lg"
                 />
@@ -536,7 +536,7 @@ export default function Experimental() {
               </div>
               <div>
                 <img
-                  src="/placeholder.svg?height=300&width=400&query=ELQY+vs+injection+current+density+comparison+PLQY"
+                  src="/placeholder.svg?height=300&width=400"
                   alt="Injection-dependent ELQY"
                   className="w-full rounded-lg shadow-lg"
                 />
@@ -557,7 +557,7 @@ export default function Experimental() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <img
-                  src="/placeholder.svg?height=250&width=350&query=EL+intensity+vs+voltage+Voc+extraction"
+                  src="/placeholder.svg?height=250&width=350"
                   alt="EL-derived Voc"
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -573,7 +573,7 @@ export default function Experimental() {
               </div>
               <div>
                 <img
-                  src="/placeholder.svg?height=250&width=350&query=quasi+fermi+level+splitting+from+EL+measurements"
+                  src="/placeholder.svg?height=250&width=350"
                   alt="Quasi-Fermi Level Analysis"
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -636,7 +636,7 @@ export default function Experimental() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <img
-                  src="/placeholder.svg?height=300&width=400&query=maximum+power+point+tracking+stability+measurement"
+                  src="/placeholder.svg?height=300&width=400"
                   alt="MPP Tracking Setup"
                   className="w-full rounded-lg shadow-lg"
                 />
@@ -688,7 +688,7 @@ export default function Experimental() {
               </div>
               <div>
                 <img
-                  src="/placeholder.svg?height=300&width=400&query=cryogenic+LILT+testing+chamber+solar+cells"
+                  src="/placeholder.svg?height=300&width=400"
                   alt="LILT Testing"
                   className="w-full rounded-lg shadow-lg"
                 />
@@ -711,7 +711,7 @@ export default function Experimental() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <img
-                  src="/placeholder.svg?height=250&width=350&query=in+situ+proton+irradiation+beamline+setup"
+                  src="/placeholder.svg?height=250&width=350"
                   alt="Proton Irradiation"
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -727,7 +727,7 @@ export default function Experimental() {
               </div>
               <div>
                 <img
-                  src="/placeholder.svg?height=250&width=350&query=radiation+damage+mechanisms+displacement+ionization"
+                  src="/placeholder.svg?height=250&width=350"
                   alt="Radiation Damage Mechanisms"
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -791,7 +791,7 @@ export default function Experimental() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <img
-                  src="/placeholder.svg?height=300&width=400&query=GIWAXS+diffraction+pattern+perovskite+analysis"
+                  src="/placeholder.svg?height=300&width=400"
                   alt="GIWAXS Analysis"
                   className="w-full rounded-lg shadow-lg"
                 />
@@ -843,7 +843,7 @@ export default function Experimental() {
               </div>
               <div>
                 <img
-                  src="/placeholder.svg?height=300&width=400&query=SEM+cross+section+perovskite+solar+cell+layers"
+                  src="/placeholder.svg?height=300&width=400"
                   alt="SEM Cross-section"
                   className="w-full rounded-lg shadow-lg"
                 />
@@ -867,7 +867,7 @@ export default function Experimental() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <img
-                  src="/placeholder.svg?height=250&width=350&query=before+after+stress+testing+structural+comparison"
+                  src="/placeholder.svg?height=250&width=350"
                   alt="Before/After Comparison"
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -883,7 +883,7 @@ export default function Experimental() {
               </div>
               <div>
                 <img
-                  src="/placeholder.svg?height=250&width=350&query=defect+formation+delamination+analysis+SEM"
+                  src="/placeholder.svg?height=250&width=350"
                   alt="Defect Analysis"
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -988,14 +988,15 @@ export default function Experimental() {
           {/* Scrollable Container */}
           <div
             ref={scrollContainerRef}
-            className="flex gap-5 overflow-x-auto scrollbar-hide pb-4"
+            className="flex gap-5 overflow-x-auto scrollbar-hide py-8 px-4 scroll-smooth"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {workflowSteps.map((step, index) => (
               <div key={step.id} className="flex-shrink-0 w-72 sm:w-80">
                 <div
                   onClick={() => handleCardClick(step)}
-                  className="bg-gradient-to-br from-slate-800/60 to-gray-800/60 backdrop-blur-sm rounded-2xl border border-slate-600/30 hover:border-slate-500/50 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl group shadow-xl cursor-pointer"
+                  className="bg-gradient-to-br from-slate-800/60 to-gray-800/60 backdrop-blur-sm rounded-2xl border border-slate-600/30 hover:border-slate-500/50 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:z-30 group shadow-xl cursor-pointer relative"
+                  style={{ transformOrigin: "center" }}
                 >
                   {/* Step Header */}
                   <div className="p-5 border-b border-slate-600/30">
@@ -1022,7 +1023,8 @@ export default function Experimental() {
                     <img
                       src={step.image || "/placeholder.svg"}
                       alt={step.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
@@ -1124,7 +1126,18 @@ export default function Experimental() {
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
-      `}</style>
+
+        /* Ensure smooth scrolling behavior */
+        .scroll-smooth {
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        /* Make sure hover effects don't interfere with scrolling */
+        .flex-shrink-0 {
+          transform-style: preserve-3d;
+        }
+`}</style>
     </div>
   )
 }

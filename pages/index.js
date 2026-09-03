@@ -4,6 +4,7 @@ import About from "../src/components/About"
 import Studies from "../src/components/Studies"
 import Data from "../src/components/Data"
 import Experimental from "../src/components/Experimental"
+import Publications from "../src/components/Publications"
 import Contact from "../src/components/Contact"
 
 export default function Page() {
@@ -23,12 +24,16 @@ export default function Page() {
         <Studies />
       </section>
 
+      <section id="characterization" className="section-container">
+        <Experimental />
+      </section>
+
       <section id="data" className="section-container">
         <Data />
       </section>
 
-      <section id="characterization" className="section-container">
-        <Experimental />
+      <section id="publications" className="section-container">
+        <Publications />
       </section>
 
       <section id="contact">
@@ -37,7 +42,7 @@ export default function Page() {
 
       <footer className="bg-gray-900 text-white py-8">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p>&copy; 2024 Sercan Ozen. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Sercan Ozen. All rights reserved.</p>
         </div>
       </footer>
     </main>

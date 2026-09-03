@@ -1,377 +1,407 @@
 "use client"
 
-import { useState } from "react"
-import { X, Star, Users, Zap, Shield } from "lucide-react" // If you've installed lucide-react
+import { useEffect, useState } from "react"
+import { Activity, ChevronLeft, ChevronRight, Eye, Shield, Star, Target, X, Zap } from "lucide-react"
+
+const softwareProjects = [
+  {
+    id: "jv-analysis",
+    title: "J–V Analysis",
+    type: "Data Analysis",
+    icon: <Activity size={32} className="text-blue-400" />,
+    accent: "blue",
+    summary:
+      "A custom application for processing current–voltage measurements and extracting photovoltaic performance parameters.",
+    capabilities: [
+      "Voc, Jsc, fill factor, and PCE extraction",
+      "Forward and reverse scan comparison",
+      "Batch processing of measurement files",
+      "Consistent plots and data export",
+    ],
+    workflow: "Import J–V data → configure analysis → compare devices → export parameters and figures",
+    preview: "J–V application interface",
+    images: [
+      "/images/program_pictures/JV6.png",
+      "/images/program_pictures/JV1.png",
+      "/images/program_pictures/JV2.png",
+      "/images/program_pictures/JV3.png",
+      "/images/program_pictures/JV4.png",
+      "/images/program_pictures/JV5.png",
+      "/images/program_pictures/JV7.png",
+      "/images/program_pictures/JV8.png",
+    ],
+  },
+  {
+    id: "stability-analysis",
+    title: "Stability Analysis",
+    type: "Data Analysis",
+    icon: <Shield size={32} className="text-emerald-400" />,
+    accent: "emerald",
+    summary:
+      "A workflow for tracking photovoltaic parameters over time and comparing device degradation under different test conditions.",
+    capabilities: [
+      "Time-dependent parameter tracking",
+      "Normalized performance comparison",
+      "Multiple-device and condition comparison",
+      "Degradation trends and stability plots",
+    ],
+    workflow: "Load sequential measurements → select devices and conditions → normalize data → visualize stability",
+    preview: "Stability analysis interface",
+    images: ["/images/program_pictures/RF1.png"],
+  },
+  {
+    id: "eqe-analysis",
+    title: "EQE Analysis",
+    type: "Spectral Analysis",
+    icon: <Star size={32} className="text-violet-400" />,
+    accent: "violet",
+    summary:
+      "A dedicated application for processing external quantum efficiency measurements and comparing spectral response.",
+    capabilities: [
+      "EQE spectrum processing and visualization",
+      "Integrated current-density calculation",
+      "Device and sub-cell comparison",
+      "Analysis-ready data and figure export",
+    ],
+    workflow: "Import spectral data → apply analysis settings → compare responses → export results",
+    preview: "EQE analysis interface",
+    images: [
+      "/images/program_pictures/EQE1.png",
+      "/images/program_pictures/EQE2.png",
+      "/images/program_pictures/EQE3.png",
+    ],
+  },
+  {
+    id: "detector-measurements",
+    title: "Detector On/Off Measurements",
+    type: "Measurement Workflow",
+    icon: <Target size={32} className="text-amber-400" />,
+    accent: "amber",
+    summary:
+      "A purpose-built application for acquiring, organizing, and evaluating paired detector measurements recorded in on/off states.",
+    capabilities: [
+      "Structured on/off acquisition sequences",
+      "Paired signal and background handling",
+      "Live measurement monitoring",
+      "Organized recording and data export",
+    ],
+    workflow: "Define acquisition sequence → record on/off states → review signals → save structured data",
+    preview: "Detector measurement interface",
+    images: ["/images/program_pictures/Det2.png", "/images/program_pictures/Det1.png"],
+  },
+  {
+    id: "plqy-automation",
+    title: "Intensity-Dependent PLQY Automation",
+    type: "Measurement Automation & Instrument Control",
+    icon: <Zap size={34} className="text-cyan-300" />,
+    accent: "cyan",
+    featured: true,
+    summary:
+      "An integrated measurement application that coordinates the optical setup, performs intensity-dependent PLQY measurements, and records the resulting data.",
+    capabilities: [
+      "Automated shutter control",
+      "Rotating filter-wheel operation",
+      "Communication with the Andor detector",
+      "Intensity-dependent acquisition sequences",
+      "Measurement recording and structured data storage",
+    ],
+    workflow:
+      "Configure intensity sequence → coordinate shutters and filter wheel → acquire Andor data → record and save measurements",
+    preview: "PLQY automation and instrument-control interface",
+    images: [
+      "/images/program_pictures/PL3.PNG",
+      "/images/program_pictures/PL1.PNG",
+      "/images/program_pictures/PL2.PNG",
+    ],
+    imageFit: "cover",
+  },
+]
+
+const accentStyles = {
+  blue: "border-blue-500/40 bg-blue-500/10 text-blue-300",
+  emerald: "border-emerald-500/40 bg-emerald-500/10 text-emerald-300",
+  violet: "border-violet-500/40 bg-violet-500/10 text-violet-300",
+  amber: "border-amber-500/40 bg-amber-500/10 text-amber-300",
+  cyan: "border-cyan-500/40 bg-cyan-500/10 text-cyan-300",
+}
 
 export default function Data() {
   const [selectedTool, setSelectedTool] = useState(null)
+  const [activeImage, setActiveImage] = useState(0)
 
-  // Featured tools with more marketing-focused descriptions
-  const featuredTools = [
-    {
-      id: "jv-plotter",
-      title: "JV Curve Analyzer Pro",
-      icon: <Zap size={36} className="text-blue-400" />,
-      content: "Accelerate your research with comprehensive JV curve analysis. Save hours of manual processing time.",
-      benefits: [
-        "Automatic parameter extraction (Voc, Jsc, FF, PCE)",
-        "Batch processing of multiple measurements",
-        "Publication-ready graphs with one click",
-        "Customizable analysis parameters",
-      ],
-      detailedContent: `
-        ## Transform Your Solar Cell Research
+  useEffect(() => {
+    if (!selectedTool) return undefined
 
-        The JV Curve Analyzer Pro provides essential visualization and analysis of current-voltage curves for solar cell characterization, saving you hours of manual processing time.
-        
-        ### Key Features
-        • Interactive plotting with zoom and pan capabilities
-        • Automatic calculation of key parameters (Voc, Jsc, FF, PCE)
-        • Comparison of multiple JV curves
-        • Export options for publication-quality figures
-        • Batch processing for large datasets
-        
-        ### Research Impact
-        Researchers using our JV Curve Analyzer report:
-        • 70% reduction in data processing time
-        • Improved reproducibility in parameter extraction
-        • Higher quality visualizations for publications
-        
-        ### Technical Details
-        • Built with Python, NumPy, and Matplotlib
-        • Optimized algorithms for fast processing
-        • Regular updates with new features
-      `,
-      videoUrl: "/placeholder-video.mp4", // Replace with actual video URL
-    },
-    {
-      id: "stability-tracker",
-      title: "Stability Tracker Suite",
-      icon: <Shield size={36} className="text-green-400" />,
-      content:
-        "Track device degradation with precision. Identify stability bottlenecks and optimize your devices faster.",
-      benefits: [
-        "Automated degradation rate calculation",
-        "Comparative analysis across multiple devices",
-        "Environmental factor correlation",
-        "Predictive stability modeling",
-      ],
-      detailedContent: `
-        ## Master Device Stability Analysis
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setSelectedTool(null)
+    }
 
-        The Stability Tracker Suite is our most comprehensive tool for in-depth analysis of solar cell performance over time, helping you identify and solve stability challenges.
-        
-        ### Key Features
-        • Temporal tracking of all performance parameters
-        • Automated degradation rate calculation
-        • Statistical analysis of device-to-device variation
-        • Identification of performance bottlenecks
-        • Correlation with environmental factors
-        
-        ### Research Impact
-        Stability Tracker has been instrumental in:
-        • Identifying primary degradation mechanisms
-        • Quantifying the impact of encapsulation strategies
-        • Developing accelerated aging protocols
-        • Publishing high-impact stability studies
-        
-        ### Technical Details
-        • Python-based with advanced statistical packages
-        • Machine learning algorithms for pattern recognition
-        • Customizable visualization options
-      `,
-      videoUrl: "/placeholder-video.mp4",
-    },
-    {
-      id: "spectral-suite",
-      title: "Spectral Analysis Suite",
-      icon: <Star size={36} className="text-purple-400" />,
-      content:
-        "Comprehensive spectroscopy tools for PL, EQE, and absorption analysis. Extract meaningful insights from your data.",
-      benefits: [
-        "Multi-peak fitting algorithms",
-        "Bandgap and Urbach energy extraction",
-        "Temperature-dependent analysis",
-        "Integrated with solar spectrum data",
-      ],
-      detailedContent: `
-        ## Unlock the Power of Spectroscopy
+    document.body.style.overflow = "hidden"
+    window.addEventListener("keydown", handleKeyDown)
 
-        The Spectral Analysis Suite combines multiple spectroscopic analysis tools in one powerful package, giving you deeper insights into material properties.
-        
-        ### Key Features
-        • PL peak fitting with multiple Gaussian/Lorentzian components
-        • EQE analysis with integrated Jsc calculation
-        • Bandgap extraction from multiple methods
-        • Temperature-dependent PL analysis
-        • Urbach energy calculation
-        
-        ### Research Impact
-        Our spectral tools have enabled researchers to:
-        • Identify subtle changes in material composition
-        • Quantify defect densities and energies
-        • Correlate optical properties with device performance
-        • Publish higher quality spectroscopic analyses
-        
-        ### Technical Details
-        • Advanced fitting algorithms for complex spectra
-        • Built-in reference data for common materials
-        • Batch processing capabilities
-        • Publication-quality visualization
-      `,
-      videoUrl: "/placeholder-video.mp4",
-    },
-    {
-      id: "advanced-imaging",
-      title: "Advanced Imaging Toolkit",
-      icon: <Users size={36} className="text-red-400" />,
-      content: "Process and analyze microscopy and diffraction data. From SEM to GIWAXS, all in one powerful package.",
-      benefits: [
-        "Automated image analysis",
-        "Crystallite size calculation",
-        "Phase identification",
-        "Orientation analysis",
-      ],
-      detailedContent: `
-        ## See Beyond the Surface
+    return () => {
+      document.body.style.overflow = ""
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [selectedTool])
 
-        The Advanced Imaging Toolkit transforms complex imaging and diffraction data into quantitative insights about your materials.
-        
-        ### Key Features
-        • SEM image analysis with grain size distribution
-        • XRD pattern processing and phase identification
-        • GIWAXS data conversion and analysis
-        • Crystallite size estimation
-        • Orientation distribution calculation
-        
-        ### Research Impact
-        Researchers using our imaging tools have:
-        • Quantified morphological changes during degradation
-        • Correlated structural properties with performance
-        • Identified optimal processing conditions
-        • Streamlined the analysis of large imaging datasets
-        
-        ### Technical Details
-        • Python-based with OpenCV and scikit-image
-        • Database integration for phase identification
-        • Advanced algorithms for pattern recognition
-        • Customizable analysis parameters
-      `,
-      videoUrl: "/placeholder-video.mp4",
-    },
-  ]
+  const analysisTools = softwareProjects.filter((tool) => !tool.featured)
+  const automationTool = softwareProjects.find((tool) => tool.featured)
 
-  const handleToolClick = (tool) => {
+  const openTool = (tool) => {
+    setActiveImage(0)
     setSelectedTool(tool)
   }
 
-  const closeModal = () => {
-    setSelectedTool(null)
+  const showPreviousImage = () => {
+    setActiveImage((current) => (current === 0 ? selectedTool.images.length - 1 : current - 1))
+  }
+
+  const showNextImage = () => {
+    setActiveImage((current) => (current === selectedTool.images.length - 1 ? 0 : current + 1))
   }
 
   return (
-    <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-      {/* Hero Section */}
-      <div className="text-center mb-20">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Research Tools for Photovoltaics</h1>
-        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-          Professional-grade Python tools for solar cell research, developed by scientists for scientists.
+    <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mb-16 text-center">
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
+          <Activity size={15} />
+          Scientific software
+        </div>
+        <h1 className="text-4xl font-bold text-white md:text-5xl">Data Analysis & Measurement Automation</h1>
+        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-300">
+          I design and develop custom applications to analyze photovoltaic data, visualize experimental results, and
+          automate specialized measurement workflows in the laboratory.
         </p>
-        <div className="mt-8 flex justify-center">
-          <button
-            onClick={() => document.getElementById("tools").scrollIntoView({ behavior: "smooth" })}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium mx-2 transition-all duration-300"
-          >
-            Get Access
-          </button>
-          <button
-            onClick={() => document.getElementById("tools").scrollIntoView({ behavior: "smooth" })}
-            className="bg-gray-700 hover:bg-gray-600 text-white px-8 py-3 rounded-lg font-medium mx-2 transition-all duration-300"
-          >
-            Explore Tools
-          </button>
+      </div>
+
+      <div className="mb-20 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="rounded-xl border border-gray-700 bg-gray-800 p-7">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-900/40">
+            <Activity className="text-blue-400" size={25} />
+          </div>
+          <h2 className="text-xl font-bold text-white">Analysis Workflows</h2>
+          <p className="mt-2 leading-relaxed text-gray-300">
+            Turning raw measurements into comparable parameters, trends, and research-ready figures.
+          </p>
+        </div>
+
+        <div className="rounded-xl border border-gray-700 bg-gray-800 p-7">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-900/40">
+            <Eye className="text-purple-400" size={25} />
+          </div>
+          <h2 className="text-xl font-bold text-white">Scientific Visualization</h2>
+          <p className="mt-2 leading-relaxed text-gray-300">
+            Creating consistent visual outputs that make device behavior and experimental comparisons easier to interpret.
+          </p>
+        </div>
+
+        <div className="rounded-xl border border-gray-700 bg-gray-800 p-7">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-900/40">
+            <Zap className="text-green-400" size={25} />
+          </div>
+          <h2 className="text-xl font-bold text-white">Experimental Automation</h2>
+          <p className="mt-2 leading-relaxed text-gray-300">
+            Connecting software with laboratory hardware to coordinate instruments and reproducible measurement sequences.
+          </p>
         </div>
       </div>
 
-      {/* Benefits Section */}
-      <div className="mb-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white">Why Use Our Tools?</h2>
-          <p className="text-gray-400 mt-2">Developed during years of research at leading institutions</p>
+      <section aria-labelledby="analysis-applications-title">
+        <div className="mb-10">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-400">Selected projects</p>
+          <h2 id="analysis-applications-title" className="mt-2 text-3xl font-bold text-white">
+            Analysis Applications
+          </h2>
+          <p className="mt-2 text-gray-400">Interfaces developed around the needs of my experimental research.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-gray-800 p-8 rounded-xl border border-gray-700">
-            <div className="bg-blue-900/30 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-blue-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold text-white mb-2">Save Research Time</h3>
-            <p className="text-gray-300">
-              Automate repetitive analysis tasks and focus on interpreting results instead of processing data.
-            </p>
-          </div>
-
-          <div className="bg-gray-800 p-8 rounded-xl border border-gray-700">
-            <div className="bg-purple-900/30 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-purple-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold text-white mb-2">Publication-Quality Results</h3>
-            <p className="text-gray-300">
-              Generate consistent, reproducible analyses and beautiful visualizations ready for your next paper.
-            </p>
-          </div>
-
-          <div className="bg-gray-800 p-8 rounded-xl border border-gray-700">
-            <div className="bg-green-900/30 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-green-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold text-white mb-2">Deeper Insights</h3>
-            <p className="text-gray-300">
-              Uncover patterns and correlations in your data that might be missed with basic analysis methods.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Featured Tools Section */}
-      <div id="tools" className="mb-20 scroll-mt-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white">Featured Tools</h2>
-          <p className="text-gray-400 mt-2">Specialized software for perovskite and solar cell research</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {featuredTools.map((tool) => (
-            <div
+        <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
+          {analysisTools.map((tool) => (
+            <button
               key={tool.id}
-              className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden hover:border-blue-500 transition-all duration-300 cursor-pointer group"
-              onClick={() => handleToolClick(tool)}
+              type="button"
+              onClick={() => openTool(tool)}
+              className="group overflow-hidden rounded-xl border border-gray-700 bg-gray-800 text-left transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/70 hover:shadow-xl hover:shadow-blue-950/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <div className="p-8">
-                <div className="flex items-start">
-                  <div className="mr-4 mt-1">{tool.icon}</div>
+              <div className="p-7 sm:p-8">
+                <div className="flex items-start gap-4">
+                  <div className="mt-1">{tool.icon}</div>
                   <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                    <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs ${accentStyles[tool.accent]}`}>
+                      {tool.type}
+                    </span>
+                    <h3 className="mt-3 text-xl font-bold text-white transition-colors group-hover:text-blue-300">
                       {tool.title}
                     </h3>
-                    <p className="text-gray-300 mt-2">{tool.content}</p>
                   </div>
                 </div>
 
-                <div className="mt-6">
-                  <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Key Benefits</h4>
-                  <ul className="space-y-2">
-                    {tool.benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-start">
-                        <svg
-                          className="h-5 w-5 text-blue-500 mr-2 mt-0.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
+                <p className="mt-5 leading-relaxed text-gray-300">{tool.summary}</p>
+
+                <div className="mt-6 border-t border-gray-700 pt-5">
+                  <p className="text-sm font-medium text-blue-400">View workflow and interface preview →</p>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {automationTool && (
+        <section className="mt-16" aria-labelledby="automation-title">
+          <div className="mb-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">Setup-integrated software</p>
+            <h2 id="automation-title" className="mt-2 text-3xl font-bold text-white">
+              Measurement Automation
+            </h2>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => openTool(automationTool)}
+            className="group relative w-full overflow-hidden rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-cyan-950/60 via-gray-800 to-blue-950/60 p-7 text-left shadow-2xl shadow-cyan-950/20 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/60 focus:outline-none focus:ring-2 focus:ring-cyan-400 sm:p-9"
+          >
+            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
+            <div className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-5">
+              <div className="lg:col-span-3">
+                <div className="flex items-center gap-4">
+                  {automationTool.icon}
+                  <span className={`inline-flex rounded-full border px-3 py-1 text-xs ${accentStyles.cyan}`}>
+                    {automationTool.type}
+                  </span>
+                </div>
+                <h3 className="mt-5 text-2xl font-bold text-white sm:text-3xl">{automationTool.title}</h3>
+                <p className="mt-4 max-w-3xl leading-relaxed text-gray-300">{automationTool.summary}</p>
+                <p className="mt-6 text-sm font-medium text-cyan-300">Explore the automated measurement workflow →</p>
+              </div>
+
+              <div className="rounded-xl border border-white/10 bg-black/20 p-5 lg:col-span-2">
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">Connected workflow</p>
+                <div className="flex flex-wrap gap-2">
+                  {["Shutters", "Filter wheel", "Andor", "Acquisition", "Data recording"].map((item) => (
+                    <span key={item} className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-gray-200">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </button>
+        </section>
+      )}
+
+      {selectedTool && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setSelectedTool(null)
+          }}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="software-dialog-title"
+            className="max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-xl border border-gray-700 bg-gray-900 shadow-2xl"
+          >
+            <div className="relative p-6 sm:p-8">
+              <button
+                type="button"
+                onClick={() => setSelectedTool(null)}
+                className="absolute right-4 top-4 rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                aria-label="Close application details"
+              >
+                <X size={24} />
+              </button>
+
+              <div className="flex items-start gap-4 pr-12">
+                {selectedTool.icon}
+                <div>
+                  <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs ${accentStyles[selectedTool.accent]}`}>
+                    {selectedTool.type}
+                  </span>
+                  <h2 id="software-dialog-title" className="mt-3 text-2xl font-bold text-white sm:text-3xl">
+                    {selectedTool.title}
+                  </h2>
+                </div>
+              </div>
+
+              <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-5">
+                <div className="lg:col-span-3">
+                  <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-lg border border-gray-700 bg-gray-950">
+                    <img
+                      src={selectedTool.images[activeImage]}
+                      alt={`${selectedTool.title} interface view ${activeImage + 1}`}
+                      className={`h-full w-full ${selectedTool.imageFit === "cover" ? "object-cover object-center" : "object-contain"}`}
+                    />
+
+                    {selectedTool.images.length > 1 && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={showPreviousImage}
+                          className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-gray-950/80 text-white backdrop-blur-sm transition hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                          aria-label="Previous interface image"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-gray-300">{benefit}</span>
+                          <ChevronLeft size={22} />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={showNextImage}
+                          className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-gray-950/80 text-white backdrop-blur-sm transition hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                          aria-label="Next interface image"
+                        >
+                          <ChevronRight size={22} />
+                        </button>
+                      </>
+                    )}
+
+                    <span className="absolute bottom-3 right-3 rounded-full border border-white/15 bg-gray-950/80 px-3 py-1 text-xs text-gray-200 backdrop-blur-sm">
+                      {activeImage + 1} / {selectedTool.images.length}
+                    </span>
+                  </div>
+
+                  {selectedTool.images.length > 1 && (
+                    <div className="mt-3 flex gap-3 overflow-x-auto pb-2">
+                      {selectedTool.images.map((image, index) => (
+                        <button
+                          key={image}
+                          type="button"
+                          onClick={() => setActiveImage(index)}
+                          className={`h-16 w-28 flex-none overflow-hidden rounded-md border-2 bg-gray-950 transition ${
+                            activeImage === index ? "border-blue-400" : "border-gray-700 opacity-60 hover:opacity-100"
+                          }`}
+                          aria-label={`Show interface image ${index + 1}`}
+                        >
+                          <img src={image} alt="" className="h-full w-full object-cover object-top" loading="lazy" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="mt-5 rounded-lg border border-gray-700 bg-gray-800/60 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">Typical workflow</p>
+                    <p className="mt-3 leading-relaxed text-gray-200">{selectedTool.workflow}</p>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <p className="leading-relaxed text-gray-300">{selectedTool.summary}</p>
+                  <h3 className="mt-7 text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
+                    Current capabilities
+                  </h3>
+                  <ul className="mt-4 space-y-3">
+                    {selectedTool.capabilities.map((capability) => (
+                      <li key={capability} className="flex items-start gap-3 text-gray-200">
+                        <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-blue-400" />
+                        <span>{capability}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
 
-                <div className="mt-6 text-blue-400 font-medium flex items-center group-hover:underline">
-                  Learn more
-                  <svg
-                    className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Tool Detail Modal */}
-      {selectedTool && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4 animate-fade-in">
-          <div className="bg-gray-900 rounded-xl border border-gray-700 w-full max-w-6xl max-h-[90vh] overflow-y-auto animate-scale-in">
-            <div className="p-8 relative">
-              <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-                aria-label="Close modal"
-              >
-                {typeof X !== "undefined" ? (
-                  <X size={24} />
-                ) : (
-                  <div className="w-6 h-6 relative">
-                    <div className="absolute w-full h-0.5 bg-current top-1/2 left-0 transform -translate-y-1/2 rotate-45"></div>
-                    <div className="absolute w-full h-0.5 bg-current top-1/2 left-0 transform -translate-y-1/2 -rotate-45"></div>
-                  </div>
-                )}
-              </button>
-
-              <div className="flex items-center mb-6">
-                <div className="mr-4">{selectedTool.icon}</div>
-                <h2 className="text-3xl font-bold text-white">{selectedTool.title}</h2>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-                {/* Video Demo Section */}
-                <div className="bg-gray-950 rounded-lg overflow-hidden lg:col-span-3">
-                  <div className="aspect-video relative">
-                    <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
-                      <p className="text-gray-400">Video demonstration will appear here</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Description Section */}
-                <div className="lg:col-span-2">
-                  <div className="prose prose-invert max-w-none">
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: selectedTool.detailedContent
-                          .replace(/\n/g, "<br>")
-                          .replace(/^## (.*$)/gm, "<h2>$1</h2>")
-                          .replace(/^### (.*$)/gm, "<h3>$1</h3>")
-                          .replace(/• (.*$)/gm, "<li>$1</li>")
-                          .replace(/<li>/g, "<ul><li>")
-                          .replace(/<\/li>\n/g, "</li></ul>"),
-                      }}
-                    />
+                  <div className="mt-8 rounded-lg border border-dashed border-gray-600 p-4 text-sm text-gray-400">
+                    Development details, technologies, and availability can be added once the interface documentation is
+                    ready.
                   </div>
                 </div>
               </div>
@@ -379,26 +409,6 @@ export default function Data() {
           </div>
         </div>
       )}
-
-      <style jsx>{`
-        @keyframes fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes scale-in {
-          from { transform: scale(0.95); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
-        }
-        
-        .animate-fade-in {
-          animation: fade-in 0.2s ease-out forwards;
-        }
-        
-        .animate-scale-in {
-          animation: scale-in 0.3s ease-out forwards;
-        }
-      `}</style>
     </div>
   )
 }

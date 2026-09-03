@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local media and Windows metadata
+public/images/program_pictures/HowToIPLQY.mp4
+Thumbs.db

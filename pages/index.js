@@ -32,11 +32,7 @@ export default function Page() {
         <Experimental />
       </section>
 
-      <section
-        id="data"
-        className="section-container"
-        style={{ background: "linear-gradient(135deg, #17212b 0%, #18383a 48%, #202734 100%)" }}
-      >
+      <section id="data" className="section-container bg-gradient-to-br from-gray-900 via-emerald-900 to-gray-900">
         <Data />
       </section>
 

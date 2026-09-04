@@ -135,19 +135,45 @@ export default function Experimental() {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-16 max-w-4xl text-center">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-blue-300">
-            Experimental characterization & technical expertise
-          </p>
-          <h2 className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl lg:text-6xl">
-            From Performance to Failure Analysis
+        <div className="mb-12 max-w-3xl">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="h-px w-10 bg-blue-400" />
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-300">Expertise</p>
+          </div>
+          <h2 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Technical Skills
           </h2>
-          <div className="mx-auto mb-6 mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-blue-400 to-purple-400" />
-          <p className="text-lg leading-relaxed text-gray-300 sm:text-xl">
-            My workflow connects electrical, optical, environmental, and structural measurements to understand device
-            limitations and degradation mechanisms.
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
+            Experimental, analytical, and computational capabilities developed through my research.
           </p>
         </div>
+
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {technicalCapabilities.map((capability) => (
+            <article key={capability.title} className={`rounded-2xl border p-6 ${capability.style}`}>
+              <h3 className="text-lg font-bold text-white">{capability.title}</h3>
+              <ul className="mt-5 grid grid-cols-1 gap-3 xl:grid-cols-2">
+                {capability.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-gray-300">
+                    <span className={`mt-2 h-1.5 w-1.5 flex-none rounded-full ${capability.dot}`} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <section className="mt-20 border-t border-slate-700/60 pt-16" aria-labelledby="experimental-workflow-title">
+          <div className="mb-10 max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-purple-300">Integrated process</p>
+            <h2 id="experimental-workflow-title" className="mt-3 text-3xl font-bold text-white sm:text-4xl">
+              Experimental Workflow
+            </h2>
+            <p className="mt-4 leading-relaxed text-gray-400">
+              How these methods work together to move from initial performance measurements to physical understanding.
+            </p>
+          </div>
 
         <div className="relative">
           <div className="absolute left-[10%] right-[10%] top-9 hidden h-px bg-gradient-to-r from-blue-400/30 via-purple-400/30 to-red-400/30 xl:block" />
@@ -204,41 +230,6 @@ export default function Experimental() {
           </ol>
         </div>
 
-        <div className="mt-12 rounded-2xl border border-slate-600/30 bg-slate-900/40 px-6 py-6 text-center backdrop-blur-sm sm:px-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-purple-300">Complete evaluation loop</p>
-          <p className="mx-auto mt-3 max-w-4xl leading-relaxed text-gray-300">
-            The results from each stage inform the next—from locating the first performance loss to identifying its
-            physical origin and guiding material, interface, or device improvements.
-          </p>
-        </div>
-
-        <section className="mt-20 border-t border-slate-700/60 pt-16" aria-labelledby="technical-capabilities-title">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-purple-300">Methods at a glance</p>
-            <h2 id="technical-capabilities-title" className="mt-3 text-3xl font-bold text-white sm:text-4xl">
-              Technical Capabilities
-            </h2>
-            <p className="mt-4 leading-relaxed text-gray-400">
-              A concise overview of the fabrication, characterization, environmental testing, and automation methods I
-              use across my research.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {technicalCapabilities.map((capability) => (
-              <article key={capability.title} className={`rounded-2xl border p-6 ${capability.style}`}>
-                <h3 className="text-lg font-bold text-white">{capability.title}</h3>
-                <ul className="mt-5 grid grid-cols-1 gap-3 xl:grid-cols-2">
-                  {capability.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-gray-300">
-                      <span className={`mt-2 h-1.5 w-1.5 flex-none rounded-full ${capability.dot}`} />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
         </section>
       </div>
     </div>

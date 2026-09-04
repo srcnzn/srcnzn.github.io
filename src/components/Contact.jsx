@@ -52,7 +52,7 @@ export default function Contact() {
               </div>
 
               <p className="mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">Primary contact</p>
-              <h3 className="mt-3 text-2xl font-bold text-white">Let&apos;s start a conversation</h3>
+              <h3 className="mt-3 text-2xl font-bold text-white">oezen1@uni-potsdam.de</h3>
               <p className="mt-3 max-w-md leading-relaxed text-slate-300">
                 Email is the best way to contact me about research, collaborations, presentations, or scientific
                 software.
@@ -63,7 +63,7 @@ export default function Contact() {
                 className="mt-8 inline-flex self-start items-center gap-3 rounded-lg bg-blue-500 px-5 py-3 font-medium text-white transition hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300"
               >
                 <Mail size={18} />
-                oezen1@uni-potsdam.de
+                Let&apos;s start a conversation
               </a>
             </div>
           </div>

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Activity, ChevronLeft, ChevronRight, Eye, Shield, Star, Target, X, Zap } from "lucide-react"
+import { Activity, ChevronLeft, ChevronRight, Shield, Star, Target, X, Zap } from "lucide-react"
 
 const softwareProjects = [
   {
@@ -162,60 +162,22 @@ export default function Data() {
   }
 
   return (
-    <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mb-16 text-center">
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
-          <Activity size={15} />
-          Scientific software
+    <div className="relative w-full overflow-hidden py-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mb-16">
+        <div className="mb-5">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-300">Scientific Software</p>
         </div>
-        <h1 className="text-4xl font-bold text-white md:text-5xl">Data Analysis & Measurement Automation</h1>
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-300">
-          I design and develop custom applications to analyze photovoltaic data, visualize experimental results, and
-          automate specialized measurement workflows in the laboratory.
-        </p>
-      </div>
-
-      <div className="mb-20 grid grid-cols-1 gap-6 md:grid-cols-3">
-        <div className="rounded-xl border border-gray-700 bg-gray-800 p-7">
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-900/40">
-            <Activity className="text-blue-400" size={25} />
-          </div>
-          <h2 className="text-xl font-bold text-white">Analysis Workflows</h2>
-          <p className="mt-2 leading-relaxed text-gray-300">
-            Turning raw measurements into comparable parameters, trends, and research-ready figures.
-          </p>
-        </div>
-
-        <div className="rounded-xl border border-gray-700 bg-gray-800 p-7">
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-900/40">
-            <Eye className="text-purple-400" size={25} />
-          </div>
-          <h2 className="text-xl font-bold text-white">Scientific Visualization</h2>
-          <p className="mt-2 leading-relaxed text-gray-300">
-            Creating consistent visual outputs that make device behavior and experimental comparisons easier to interpret.
-          </p>
-        </div>
-
-        <div className="rounded-xl border border-gray-700 bg-gray-800 p-7">
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-900/40">
-            <Zap className="text-green-400" size={25} />
-          </div>
-          <h2 className="text-xl font-bold text-white">Experimental Automation</h2>
-          <p className="mt-2 leading-relaxed text-gray-300">
-            Connecting software with laboratory hardware to coordinate instruments and reproducible measurement sequences.
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-10">
+          <h1 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">Data Analysis</h1>
+          <p className="max-w-lg text-base leading-relaxed text-gray-300 md:text-right lg:text-lg">
+            I design and develop custom applications to analyze photovoltaic data, visualize experimental results, and
+            automate specialized measurement workflows in the laboratory.
           </p>
         </div>
       </div>
 
-      <section aria-labelledby="analysis-applications-title">
-        <div className="mb-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-400">Selected projects</p>
-          <h2 id="analysis-applications-title" className="mt-2 text-3xl font-bold text-white">
-            Analysis Applications
-          </h2>
-          <p className="mt-2 text-gray-400">Interfaces developed around the needs of my experimental research.</p>
-        </div>
-
+      <section aria-label="Analysis applications">
         <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
           {analysisTools.map((tool) => (
             <button
@@ -409,6 +371,7 @@ export default function Data() {
           </div>
         </div>
       )}
+      </div>
     </div>
   )
 }

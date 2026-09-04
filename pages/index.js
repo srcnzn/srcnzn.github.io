@@ -16,7 +16,7 @@ export default function Page() {
         <Home />
       </section>
 
-      <section id="about" className="section-container">
+      <section id="about" className="section-container" style={{ minHeight: "auto" }}>
         <About />
       </section>
 
@@ -24,16 +24,20 @@ export default function Page() {
         <Studies />
       </section>
 
+      <section id="publications" className="section-container">
+        <Publications />
+      </section>
+
       <section id="characterization" className="section-container">
         <Experimental />
       </section>
 
-      <section id="data" className="section-container">
+      <section
+        id="data"
+        className="section-container"
+        style={{ background: "linear-gradient(135deg, #17212b 0%, #18383a 48%, #202734 100%)" }}
+      >
         <Data />
-      </section>
-
-      <section id="publications" className="section-container">
-        <Publications />
       </section>
 
       <section id="contact">

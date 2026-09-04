@@ -7,9 +7,9 @@ const navItems = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "studies", label: "Research" },
+  { id: "publications", label: "Publications" },
   { id: "characterization", label: "Expertise" },
   { id: "data", label: "Software" },
-  { id: "publications", label: "Publications" },
 ]
 
 function LinkedInIcon() {

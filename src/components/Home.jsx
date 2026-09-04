@@ -33,8 +33,12 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Optional animated arrow indicating scroll down */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <button
+          type="button"
+          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce rounded-full p-3 text-gray-400 transition hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+          aria-label="Scroll to About Me"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -45,11 +49,11 @@ export default function Home() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="text-gray-400"
+            className="text-current"
           >
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
-        </div>
+        </button>
       </div>
     </div>
   )

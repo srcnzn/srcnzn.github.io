@@ -1,73 +1,50 @@
-import { GraduationCap, User, Wrench, Zap } from "lucide-react"
+import { User } from "lucide-react"
 
-const education = [
+const journey = [
   {
-    degree: "Ph.D. in Physics",
-    institution: "University of Potsdam, Germany",
-    period: "2023–Present",
-    detail: "Soft Matter Physics and Optoelectronics Group · ROSI subgroup",
-  },
-  {
-    degree: "M.Sc. in Photonics Science & Engineering",
-    institution: "Izmir Institute of Technology, Turkey",
-    period: "2020",
-  },
-  {
-    degree: "B.Sc. in Physics",
-    institution: "Izmir Institute of Technology, Turkey",
     period: "2017",
-  },
-]
-
-const experience = [
-  {
-    role: "Doctoral Researcher",
-    organization: "University of Potsdam",
-    period: "2023–Present",
-    detail:
-      "Researching the performance, stability, and degradation of single- and multijunction photovoltaic devices under space-relevant conditions.",
-  },
-  {
-    role: "Research Assistant",
+    title: "B.Sc. in Physics",
     organization: "Izmir Institute of Technology",
-    period: "2018–2023",
-    detail: "Supported teaching and laboratory courses while building and configuring optical experimental setups.",
+    detail: "Foundation in experimental physics, optics, and materials science.",
   },
   {
-    role: "Graduate Researcher",
-    organization: "CENT Research Group",
     period: "2017–2020",
-    detail: "Investigated how doping influences the optical and electronic properties of perovskite materials.",
+    title: "M.Sc. in Photonics Science & Engineering",
+    organization: "Izmir Institute of Technology",
+    detail: "Focused on the optical and electronic properties of cesium lead halide perovskites.",
   },
   {
-    role: "Engineering Intern",
-    organization: "DVLX R&D",
-    period: "2015–2016",
-    detail: "Contributed to modular electric-bicycle conversion systems, battery assemblies, and controller programming.",
+    period: "2018–2023",
+    title: "Research Assistant",
+    organization: "Izmir Institute of Technology",
+    detail: "Supported teaching laboratories and developed optical experimental setups alongside research activities.",
+  },
+  {
+    period: "2023–Present",
+    title: "Ph.D. & Doctoral Researcher",
+    organization: "University of Potsdam",
+    detail: "Investigating photovoltaic device physics, stability, and degradation under space-relevant conditions.",
   },
 ]
 
 export default function About() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-gray-100 py-20 text-gray-800 sm:py-24">
-      <div className="pointer-events-none absolute inset-0 opacity-30">
-        <div className="absolute left-10 top-20 h-72 w-72 rounded-full bg-blue-200 blur-3xl" />
-        <div className="absolute right-10 top-40 h-72 w-72 rounded-full bg-indigo-200 blur-3xl" />
+    <div className="relative w-full overflow-hidden bg-gradient-to-br from-stone-300 via-[#c7c1b8] to-zinc-400 py-16 text-stone-900 sm:py-20">
+      <div className="pointer-events-none absolute inset-0 opacity-20">
+        <div className="absolute left-10 top-20 h-72 w-72 rounded-full bg-amber-200 blur-3xl" />
+        <div className="absolute right-10 top-40 h-72 w-72 rounded-full bg-rose-200 blur-3xl" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-14 max-w-3xl text-center">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-blue-600">Research profile</p>
-          <h2 className="bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-700 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl lg:text-6xl">
-            About Me
-          </h2>
-          <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500" />
+        <div className="mb-9">
+          <h2 className="text-4xl font-bold tracking-tight text-stone-950 sm:text-5xl">About Me</h2>
+          <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-amber-700 to-stone-600" />
         </div>
 
-        <section className="grid grid-cols-1 gap-8 rounded-2xl border border-gray-200 bg-white/80 p-6 shadow-xl backdrop-blur-sm sm:p-8 lg:grid-cols-12 lg:items-center lg:p-10">
-          <div className="lg:col-span-4">
-            <div className="mx-auto max-w-xs rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 p-1 shadow-lg">
-              <div className="aspect-[4/5] overflow-hidden rounded-[0.85rem] bg-gradient-to-br from-blue-600 to-indigo-700">
+        <div className="grid items-center gap-8 sm:grid-cols-[180px_minmax(0,1fr)] lg:gap-12">
+          <div className="mx-auto w-full max-w-[180px] sm:mx-0">
+            <div className="rounded-[1.75rem] bg-gradient-to-br from-stone-500 via-zinc-500 to-stone-700 p-1 shadow-2xl shadow-stone-900/20">
+              <div className="aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-stone-600 to-zinc-800">
                 <img
                   src="/profile-photo.png"
                   alt="Sercan Ozen"
@@ -77,109 +54,56 @@ export default function About() {
                     event.currentTarget.nextElementSibling.style.display = "flex"
                   }}
                 />
-                <div className="hidden h-full flex-col items-center justify-center text-white">
-                  <User size={44} className="mb-3" />
+                <div className="hidden h-full flex-col items-center justify-center text-white/80">
+                  <User size={48} className="mb-3" />
                   <span className="text-sm">Profile photo</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-8">
-            <h3 className="text-3xl font-bold text-gray-900 sm:text-4xl">Sercan Ozen</h3>
-            <p className="mt-2 text-lg font-medium text-blue-700">Doctoral Researcher in Physics</p>
-            <p className="mt-1 text-gray-500">University of Potsdam · Potsdam, Germany</p>
-
-            <div className="mt-7 space-y-5 text-base leading-relaxed text-gray-700">
+          <div>
+            <div className="max-w-4xl space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
               <p>
-                I investigate the performance, stability, and degradation mechanisms of advanced photovoltaic devices
-                under extreme and space-relevant environments. My work spans single-junction and multijunction
-                technologies, including all-perovskite, perovskite–organic, and perovskite–silicon architectures.
+                Welcome! I am an experimental physicist working at the intersection of photovoltaic device physics and space
+                environments. I investigate how emerging solar-cell technologies perform, degrade, and can be made more
+                resilient beyond terrestrial conditions.
               </p>
               <p>
-                By combining electrical, optical, environmental, and structural characterization, I study radiation
-                tolerance, LILT operation, thermal cycling, encapsulation, recombination losses, and long-term device
-                stability.
+                My approach connects hands-on experimentation with scientific programming: I build measurement workflows,
+                develop analysis tools, and use electrical and optical diagnostics to turn complex device behavior into
+                clear physical insight.
               </p>
-              <p>
-                I also develop custom scientific software and setup-integrated automation tools for measurement, data
-                analysis, and visualization. This allows me to connect experimental design with reproducible data
-                acquisition and interpretation.
-              </p>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              {["Space photovoltaics", "Device physics", "Experimental automation", "Scientific software"].map((item) => (
-                <span key={item} className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-sm text-blue-700">
-                  {item}
-                </span>
-              ))}
             </div>
           </div>
-        </section>
-
-        <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <section className="rounded-2xl border border-gray-200 bg-white/80 p-7 shadow-xl backdrop-blur-sm sm:p-8">
-            <div className="mb-7 flex items-center gap-4">
-              <div className="rounded-full bg-blue-100 p-3">
-                <GraduationCap className="text-blue-600" size={25} />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">Academic background</p>
-                <h3 className="mt-1 text-2xl font-bold text-gray-900">Education</h3>
-              </div>
-            </div>
-
-            <div className="relative space-y-7 before:absolute before:bottom-2 before:left-[7px] before:top-2 before:w-px before:bg-blue-200">
-              {education.map((item) => (
-                <div key={item.degree} className="relative pl-8">
-                  <span className="absolute left-0 top-1.5 h-[15px] w-[15px] rounded-full border-4 border-white bg-blue-500 shadow" />
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-                    <h4 className="font-bold text-gray-900">{item.degree}</h4>
-                    <span className="flex-none text-sm font-medium text-blue-700">{item.period}</span>
-                  </div>
-                  <p className="mt-1 text-sm text-gray-600">{item.institution}</p>
-                  {item.detail && <p className="mt-1 text-sm text-gray-500">{item.detail}</p>}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="rounded-2xl border border-gray-200 bg-white/80 p-7 shadow-xl backdrop-blur-sm sm:p-8">
-            <div className="mb-7 flex items-center gap-4">
-              <div className="rounded-full bg-indigo-100 p-3">
-                <Zap className="text-indigo-600" size={25} />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-600">Professional path</p>
-                <h3 className="mt-1 text-2xl font-bold text-gray-900">Experience</h3>
-              </div>
-            </div>
-
-            <div className="relative space-y-7 before:absolute before:bottom-2 before:left-[7px] before:top-2 before:w-px before:bg-indigo-200">
-              {experience.map((item) => (
-                <div key={`${item.role}-${item.period}`} className="relative pl-8">
-                  <span className="absolute left-0 top-1.5 h-[15px] w-[15px] rounded-full border-4 border-white bg-indigo-500 shadow" />
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-                    <h4 className="font-bold text-gray-900">{item.role}</h4>
-                    <span className="flex-none text-sm font-medium text-indigo-700">{item.period}</span>
-                  </div>
-                  <p className="mt-1 text-sm font-medium text-gray-600">{item.organization}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.detail}</p>
-                </div>
-              ))}
-            </div>
-          </section>
         </div>
 
-        <div className="mt-8 rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50 p-6 text-center shadow-sm">
-          <div className="flex items-center justify-center gap-3 text-blue-700">
-            <Wrench size={20} />
-            <p className="font-medium">
-              Detailed characterization methods and technical capabilities are presented in the Expertise section.
+        <section className="mt-12 border-t border-stone-600/30 pt-9" aria-labelledby="academic-journey-title">
+          <div className="mb-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-800">Background</p>
+              <h3 id="academic-journey-title" className="mt-2 text-2xl font-bold text-stone-950">Academic Journey</h3>
+            </div>
+            <p className="max-w-lg text-sm leading-relaxed text-stone-700 sm:text-right">
+              From materials physics and photonics to photovoltaic devices for extreme environments.
             </p>
           </div>
-        </div>
+
+          <ol className="relative grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <div className="absolute left-[12.5%] right-[12.5%] top-[1.15rem] hidden h-px bg-gradient-to-r from-amber-700/50 via-stone-600/50 to-zinc-600/50 xl:block" />
+            {journey.map((item, index) => (
+              <li key={`${item.period}-${item.title}`} className="relative rounded-xl border border-white/35 bg-white/25 p-4 shadow-md shadow-stone-700/15 backdrop-blur-md">
+                <div className="relative z-10 mb-3 flex items-center justify-between">
+                  <span className="rounded-full border border-amber-800/20 bg-amber-100/35 px-3 py-1 text-xs font-semibold text-amber-900">{item.period}</span>
+                  <span className="font-mono text-xs text-stone-600">0{index + 1}</span>
+                </div>
+                <h4 className="font-bold leading-snug text-stone-950">{item.title}</h4>
+                <p className="mt-2 text-sm font-medium text-amber-900">{item.organization}</p>
+                <p className="mt-3 text-xs leading-relaxed text-stone-700">{item.detail}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
       </div>
     </div>
   )

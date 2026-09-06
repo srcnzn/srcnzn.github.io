@@ -161,7 +161,7 @@ export default function Publications() {
             {publications.map((publication, index) => (
               <div key={publication.doi} className="shrink-0 px-2.5 first:pl-0 last:pr-0" style={{ width: `${100 / itemsPerView}%` }}>
                 <article
-                  className="group relative flex h-[34rem] cursor-pointer flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                  className="group relative flex h-[34rem] cursor-pointer flex-col overflow-hidden rounded-2xl bg-white/90 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
                   onClick={() => setOpenAbstract((current) => current === publication.doi ? null : publication.doi)}
                   onMouseLeave={() => setOpenAbstract(null)}
                 >

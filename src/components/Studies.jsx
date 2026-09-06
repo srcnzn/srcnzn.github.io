@@ -47,7 +47,7 @@ const researchAreas = [
 
 export default function Studies() {
   return (
-    <div className="relative w-full overflow-hidden bg-[#070b14] py-20 text-white sm:py-24">
+    <div className="relative min-h-screen w-full overflow-hidden bg-[#070b14] py-20 text-white sm:py-24">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-40 top-0 h-[30rem] w-[30rem] rounded-full bg-blue-600/10 blur-3xl" />
         <div className="absolute -right-36 bottom-0 h-[26rem] w-[26rem] rounded-full bg-violet-600/10 blur-3xl" />

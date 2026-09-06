@@ -10,6 +10,7 @@ const navItems = [
   { id: "publications", label: "Publications" },
   { id: "characterization", label: "Expertise" },
   { id: "data", label: "Software" },
+  { id: "contact", label: "Contact" },
 ]
 
 function LinkedInIcon() {
@@ -52,8 +53,15 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll(".section-container")
+      const sections = navItems
+        .map((item) => document.getElementById(item.id))
+        .filter(Boolean)
       const scrollPosition = window.scrollY + 100
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        setActiveSection(navItems[navItems.length - 1].id)
+        return
+      }
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop

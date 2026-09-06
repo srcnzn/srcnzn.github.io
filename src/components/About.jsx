@@ -65,14 +65,14 @@ export default function About() {
           <div>
             <div className="max-w-4xl space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
               <p>
-                Welcome! I am an experimental physicist working at the intersection of photovoltaic device physics and space
-                environments. I investigate how emerging solar-cell technologies perform, degrade, and can be made more
-                resilient beyond terrestrial conditions.
+                Hello! I am an experimental physicist working at the intersection of photovoltaic device physics and space
+                environments. My research examines how emerging solar-cell technologies perform and degrade under
+                space-relevant and other extreme conditions—and how their resilience can be improved.
               </p>
               <p>
-                My approach connects hands-on experimentation with scientific programming: I build measurement workflows,
-                develop analysis tools, and use electrical and optical diagnostics to turn complex device behavior into
-                clear physical insight.
+                I combine hands-on device fabrication with scientific programming: building measurement workflows,
+                developing analysis tools, and using electrical and optical diagnostics to translate complex device
+                behavior into clear physical insight.
               </p>
             </div>
           </div>
@@ -84,9 +84,6 @@ export default function About() {
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-800">Background</p>
               <h3 id="academic-journey-title" className="mt-2 text-2xl font-bold text-stone-950">Academic Journey</h3>
             </div>
-            <p className="max-w-lg text-sm leading-relaxed text-stone-700 sm:text-right">
-              From materials physics and photonics to photovoltaic devices for extreme environments.
-            </p>
           </div>
 
           <ol className="relative grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">

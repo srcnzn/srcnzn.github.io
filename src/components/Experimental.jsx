@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Activity, ArrowLeft, ArrowRight, Eye, Globe2, Rocket, Shield, Target, X } from "lucide-react"
+import { Activity, ArrowLeft, ArrowRight, Cloud, Eye, Globe2, Rocket, Shield, Target, X } from "lucide-react"
 
 const workflowSteps = [
   { number: "01", phase: "Initial assessment", title: "Performance Benchmarking", description: "Establishing a reliable device baseline under terrestrial and space-relevant illumination.", techniques: ["Dark & light J–V", "AM1.5G & AM0", "EQE", "Stabilized performance"], icon: Target, color: "blue" },
@@ -133,36 +133,44 @@ export default function Experimental() {
   const [roadmapOpen, setRoadmapOpen] = useState(false)
   const [selectedPathway, setSelectedPathway] = useState(null)
   const [isLaunching, setIsLaunching] = useState(false)
+  const [isEarthSpinning, setIsEarthSpinning] = useState(false)
+
+  const selectEarthPathway = () => {
+    if (isEarthSpinning || isLaunching) return
+    setIsEarthSpinning(true)
+    window.setTimeout(() => {
+      setSelectedPathway("earth")
+      setIsEarthSpinning(false)
+    }, 1000)
+  }
 
   const selectSpacePathway = () => {
+    if (isEarthSpinning || isLaunching) return
     setIsLaunching(true)
     window.setTimeout(() => {
       setSelectedPathway("space")
       setIsLaunching(false)
-    }, 650)
+    }, 1000)
   }
 
   useEffect(() => {
     if (!roadmapOpen) {
       setSelectedPathway(null)
       setIsLaunching(false)
+      setIsEarthSpinning(false)
       return undefined
     }
     const handleKeyDown = (event) => event.key === "Escape" && setRoadmapOpen(false)
-    const scrollY = window.scrollY
-    document.body.style.position = "fixed"
-    document.body.style.top = `-${scrollY}px`
-    document.body.style.left = "0"
-    document.body.style.right = "0"
+    document.documentElement.style.overflow = "hidden"
+    document.documentElement.style.overscrollBehavior = "none"
     document.body.style.overflow = "hidden"
+    document.body.style.overscrollBehavior = "none"
     window.addEventListener("keydown", handleKeyDown)
     return () => {
-      document.body.style.position = ""
-      document.body.style.top = ""
-      document.body.style.left = ""
-      document.body.style.right = ""
+      document.documentElement.style.overflow = ""
+      document.documentElement.style.overscrollBehavior = ""
       document.body.style.overflow = ""
-      window.scrollTo(0, scrollY)
+      document.body.style.overscrollBehavior = ""
       window.removeEventListener("keydown", handleKeyDown)
     }
   }, [roadmapOpen])
@@ -170,7 +178,7 @@ export default function Experimental() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 py-20 text-white sm:py-24">
       <div className="pointer-events-none absolute inset-0 opacity-10"><div className="absolute left-10 top-20 h-72 w-72 rounded-full bg-blue-500 blur-xl" /><div className="absolute right-10 top-40 h-72 w-72 rounded-full bg-purple-500 blur-xl" /><div className="absolute bottom-20 left-1/2 h-72 w-72 rounded-full bg-indigo-500 blur-xl" /></div>
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className={`relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 ${roadmapOpen ? "z-[100]" : "z-10"}`}>
         <div className="mb-12">
           <div className="mb-5 flex items-center gap-3"><span className="h-px w-10 bg-blue-400" /><p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-300">Expertise</p></div>
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
@@ -185,14 +193,14 @@ export default function Experimental() {
             <li className="lg:col-span-3">
               <button type="button" onClick={() => setRoadmapOpen(true)} className="group flex h-full w-full flex-col items-start justify-between gap-5 rounded-2xl border border-purple-400/25 bg-gradient-to-r from-purple-500/[0.12] via-slate-800/70 to-blue-500/[0.1] p-6 text-left transition duration-300 hover:-translate-y-0.5 hover:border-purple-300/45 focus:outline-none focus:ring-2 focus:ring-purple-400 sm:flex-row sm:items-center sm:p-7">
                 <span><span className="text-xs font-semibold uppercase tracking-[0.24em] text-purple-300">From measurement to insight</span><span className="mt-3 block text-xl font-bold text-white sm:text-2xl">Measurement & Analysis Roadmap</span><span className="mt-3 block text-sm leading-relaxed text-gray-400">Follow the sequence and see which physical parameters are derived at each stage.</span></span>
-                <span className="flex items-center gap-2 rounded-full border border-purple-300/25 bg-purple-300/10 px-5 py-3 text-sm font-semibold text-purple-200 transition group-hover:bg-purple-300/15">View roadmap <ArrowRight size={17} /></span>
+                <span className="flex items-center gap-2.5 rounded-full border border-purple-300/55 bg-gradient-to-r from-purple-500 to-indigo-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-purple-950/25 transition duration-300 group-hover:from-purple-400 group-hover:to-indigo-400 group-hover:shadow-purple-500/20">View roadmap <ArrowRight size={19} /></span>
               </button>
             </li>
           </ol>
         </div>
 
         {roadmapOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center overscroll-none bg-black/80 p-4 backdrop-blur-sm" onMouseDown={(event) => event.target === event.currentTarget && setRoadmapOpen(false)}>
+          <div className="fixed inset-0 z-[100] flex items-center justify-center overscroll-none bg-black/80 p-4 backdrop-blur-sm" onMouseDown={(event) => event.target === event.currentTarget && setRoadmapOpen(false)}>
             <div role="dialog" aria-modal="true" aria-labelledby="measurement-roadmap-title" className="max-h-[92vh] w-full max-w-7xl overflow-y-auto overscroll-contain rounded-2xl border border-white/80 bg-[#eef1f4] text-slate-900 shadow-2xl">
               <div className="flex items-start justify-between gap-6 border-b border-slate-300 bg-white/65 p-6 sm:p-8"><div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-indigo-600">From measurement to insight</p><h2 id="measurement-roadmap-title" className="mt-2 text-3xl font-bold text-slate-950 sm:text-4xl">Measurement & Analysis Roadmap</h2><p className="mt-3 max-w-3xl leading-relaxed text-slate-600">A closer look at how each measurement feeds the next stage of the analysis.</p></div><button type="button" onClick={() => setRoadmapOpen(false)} aria-label="Close measurement roadmap" className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-200 hover:text-slate-950 focus:outline-none focus:ring-2 focus:ring-indigo-500"><X size={24} /></button></div>
               <div className="p-5 sm:p-8">
@@ -206,18 +214,29 @@ export default function Experimental() {
 
                     <div className="relative mt-10 grid gap-6 md:grid-cols-2">
                       <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-px w-16 -translate-x-1/2 bg-slate-300 md:block" />
-                      <button type="button" onClick={() => setSelectedPathway("earth")} className="group relative overflow-hidden rounded-3xl border border-sky-200 bg-gradient-to-br from-white via-sky-50 to-blue-100 p-8 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-sky-500 sm:p-10">
+                      <button type="button" onClick={selectEarthPathway} disabled={isEarthSpinning || isLaunching} className="group relative overflow-hidden rounded-3xl border border-sky-200 bg-gradient-to-br from-white via-sky-50 to-blue-100 p-8 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:cursor-wait sm:p-10">
                         <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-sky-300/20 blur-2xl" />
-                        <Globe2 size={70} strokeWidth={1.25} className="relative text-sky-700 transition duration-500 group-hover:rotate-6 group-hover:scale-105" />
+                        <Globe2 size={70} strokeWidth={1.25} className={`relative text-sky-700 transition-all duration-1000 ease-in-out ${isEarthSpinning ? "rotate-[360deg] scale-110" : "group-hover:rotate-6 group-hover:scale-105"}`} />
                         <p className="relative mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Earth pathway</p>
                         <h4 className="relative mt-2 text-2xl font-bold text-slate-950">Core Characterization</h4>
                         <p className="relative mt-3 leading-relaxed text-slate-600">From device fabrication to electrical, spectral, and luminescence-based loss analysis.</p>
-                        <span className="relative mt-7 flex items-center gap-2 text-sm font-semibold text-sky-800">Explore pathway <ArrowRight size={17} /></span>
+                        <span className="relative mt-7 flex items-center gap-2 text-sm font-semibold text-sky-800">{isEarthSpinning ? "Opening pathway…" : "Explore pathway"} <ArrowRight size={17} /></span>
                       </button>
 
-                      <button type="button" onClick={selectSpacePathway} disabled={isLaunching} className="group relative overflow-hidden rounded-3xl border border-indigo-200 bg-gradient-to-br from-white via-indigo-50 to-violet-100 p-8 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:border-indigo-400 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:cursor-wait sm:p-10">
+                      <button type="button" onClick={selectSpacePathway} disabled={isLaunching || isEarthSpinning} className="group relative overflow-hidden rounded-3xl border border-indigo-200 bg-gradient-to-br from-white via-indigo-50 to-violet-100 p-8 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:border-indigo-400 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:cursor-wait sm:p-10">
                         <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-violet-300/20 blur-2xl" />
-                        <Rocket size={70} strokeWidth={1.25} className={`relative text-indigo-700 transition-all duration-700 ease-in ${isLaunching ? "translate-x-24 -translate-y-28 scale-75 opacity-0" : "group-hover:-translate-y-2 group-hover:translate-x-2"}`} />
+                        <div className="relative h-[70px] w-[70px]">
+                          <div className={`relative z-10 h-full w-full transition-all duration-1000 ease-in ${isLaunching ? "translate-x-24 -translate-y-28 scale-75 opacity-0" : "group-hover:-translate-y-2 group-hover:translate-x-2"}`}>
+                            <Rocket size={70} strokeWidth={1.25} className={`roadmap-rocket relative z-10 text-indigo-700 ${isLaunching ? "roadmap-rocket-launching" : ""}`} />
+                          </div>
+                          {isLaunching && (
+                            <div className="pointer-events-none absolute -bottom-2 -left-3 h-14 w-20">
+                              <Cloud className="rocket-smoke absolute bottom-1 left-1 text-slate-500" size={30} strokeWidth={1.25} />
+                              <Cloud className="rocket-smoke rocket-smoke-delay-1 absolute bottom-0 left-6 text-slate-400" size={38} strokeWidth={1.25} />
+                              <Cloud className="rocket-smoke rocket-smoke-delay-2 absolute bottom-2 left-12 text-slate-500" size={26} strokeWidth={1.25} />
+                            </div>
+                          )}
+                        </div>
                         <p className="relative mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700">Space pathway</p>
                         <h4 className="relative mt-2 text-2xl font-bold text-slate-950">Space-Environment Evaluation</h4>
                         <p className="relative mt-3 leading-relaxed text-slate-600">Extend the core workflow into integration, LILT operation, irradiation, and reliability analysis.</p>

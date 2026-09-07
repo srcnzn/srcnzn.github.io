@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Activity, ChevronLeft, ChevronRight, Shield, Star, Target, X, Zap } from "lucide-react"
+import { Activity, ChevronLeft, ChevronRight, Maximize2, Shield, Star, Target, X, Zap } from "lucide-react"
 
 const softwareProjects = [
   {
@@ -21,14 +21,15 @@ const softwareProjects = [
     workflow: "Import J–V data → configure analysis → compare devices → export parameters and figures",
     preview: "J–V application interface",
     images: [
-      "/images/program_pictures/JV6.png",
-      "/images/program_pictures/JV1.png",
-      "/images/program_pictures/JV2.png",
-      "/images/program_pictures/JV3.png",
-      "/images/program_pictures/JV4.png",
-      "/images/program_pictures/JV5.png",
-      "/images/program_pictures/JV7.png",
-      "/images/program_pictures/JV8.png",
+      "/images/program_pictures/JVanalyzer1.png",
+      "/images/program_pictures/JVanalyzer2.png",
+      "/images/program_pictures/JVanalyzer3.png",
+      "/images/program_pictures/JVanalyzer4.png",
+      "/images/program_pictures/JVanalyzer5.png",
+      "/images/program_pictures/JVanalyzer6.png",
+      "/images/program_pictures/JVanalyzer7.png",
+      "/images/program_pictures/JVanalyzer8.png",
+      "/images/program_pictures/JVanalyzer9.png",
     ],
   },
   {
@@ -47,7 +48,10 @@ const softwareProjects = [
     ],
     workflow: "Load sequential measurements → select devices and conditions → normalize data → visualize stability",
     preview: "Stability analysis interface",
-    images: ["/images/program_pictures/RF1.png"],
+    images: [
+      "/images/program_pictures/RF1.png",
+      "/images/program_pictures/RF2.png",
+    ],
   },
   {
     id: "eqe-analysis",
@@ -73,7 +77,7 @@ const softwareProjects = [
   },
   {
     id: "detector-measurements",
-    title: "Detector On/Off Measurements",
+    title: "Detector Signal Analysis",
     type: "Measurement Workflow",
     icon: <Target size={32} className="text-amber-400" />,
     accent: "amber",
@@ -87,7 +91,7 @@ const softwareProjects = [
     ],
     workflow: "Define acquisition sequence → record on/off states → review signals → save structured data",
     preview: "Detector measurement interface",
-    images: ["/images/program_pictures/Det2.png", "/images/program_pictures/Det1.png"],
+    images: ["/images/program_pictures/Det1.png", "/images/program_pictures/Det2.png"],
   },
   {
     id: "plqy-automation",
@@ -109,9 +113,9 @@ const softwareProjects = [
       "Configure intensity sequence → coordinate shutters and filter wheel → acquire Andor data → record and save measurements",
     preview: "PLQY automation and instrument-control interface",
     images: [
-      "/images/program_pictures/PL3.PNG",
       "/images/program_pictures/PL1.PNG",
       "/images/program_pictures/PL2.PNG",
+      "/images/program_pictures/PL3.PNG",
     ],
     imageFit: "cover",
   },
@@ -128,28 +132,39 @@ const accentStyles = {
 export default function Data() {
   const [selectedTool, setSelectedTool] = useState(null)
   const [activeImage, setActiveImage] = useState(0)
+  const [imageExpanded, setImageExpanded] = useState(false)
 
   useEffect(() => {
     if (!selectedTool) return undefined
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") setSelectedTool(null)
+      if (event.key === "Escape") {
+        if (imageExpanded) setImageExpanded(false)
+        else setSelectedTool(null)
+      }
     }
 
+    document.documentElement.style.overflow = "hidden"
+    document.documentElement.style.overscrollBehavior = "none"
     document.body.style.overflow = "hidden"
+    document.body.style.overscrollBehavior = "none"
     window.addEventListener("keydown", handleKeyDown)
 
     return () => {
+      document.documentElement.style.overflow = ""
+      document.documentElement.style.overscrollBehavior = ""
       document.body.style.overflow = ""
+      document.body.style.overscrollBehavior = ""
       window.removeEventListener("keydown", handleKeyDown)
     }
-  }, [selectedTool])
+  }, [selectedTool, imageExpanded])
 
   const analysisTools = softwareProjects.filter((tool) => !tool.featured)
   const automationTool = softwareProjects.find((tool) => tool.featured)
 
   const openTool = (tool) => {
     setActiveImage(0)
+    setImageExpanded(false)
     setSelectedTool(tool)
   }
 
@@ -163,7 +178,7 @@ export default function Data() {
 
   return (
     <div className="relative w-full overflow-hidden py-20">
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className={`relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${selectedTool ? "z-[100]" : "z-10"}`}>
       <div className="mb-16">
         <div className="mb-5">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-300">Scientific Software</p>
@@ -255,7 +270,7 @@ export default function Data() {
 
       {selectedTool && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center overscroll-none bg-black/80 p-4 backdrop-blur-sm"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) setSelectedTool(null)
           }}
@@ -264,7 +279,7 @@ export default function Data() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="software-dialog-title"
-            className="max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-xl border border-gray-700 bg-gray-900 shadow-2xl"
+            className="max-h-[94vh] w-[95vw] max-w-[1600px] overflow-y-auto overscroll-contain rounded-xl border border-gray-700 bg-gray-900 shadow-2xl"
           >
             <div className="relative p-6 sm:p-8">
               <button
@@ -288,20 +303,31 @@ export default function Data() {
                 </div>
               </div>
 
-              <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-5">
-                <div className="lg:col-span-3">
-                  <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-lg border border-gray-700 bg-gray-950">
+              <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-10">
+                <div className="lg:col-span-7">
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setImageExpanded(true)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") setImageExpanded(true)
+                    }}
+                    aria-label="Open interface image fullscreen"
+                    className="group/image relative flex aspect-video cursor-zoom-in items-center justify-center overflow-hidden rounded-lg border border-gray-700 bg-gray-950 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  >
                     <img
                       src={selectedTool.images[activeImage]}
                       alt={`${selectedTool.title} interface view ${activeImage + 1}`}
-                      className={`h-full w-full ${selectedTool.imageFit === "cover" ? "object-cover object-center" : "object-contain"}`}
+                      className="h-full w-full object-contain"
                     />
+
+                    <span className="absolute right-3 top-3 flex items-center gap-2 rounded-full border border-white/15 bg-gray-950/80 px-3 py-2 text-xs font-semibold text-gray-200 opacity-0 backdrop-blur-sm transition group-hover/image:opacity-100 group-focus/image:opacity-100"><Maximize2 size={15} /> Fullscreen</span>
 
                     {selectedTool.images.length > 1 && (
                       <>
                         <button
                           type="button"
-                          onClick={showPreviousImage}
+                          onClick={(event) => { event.stopPropagation(); showPreviousImage() }}
                           className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-gray-950/80 text-white backdrop-blur-sm transition hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
                           aria-label="Previous interface image"
                         >
@@ -309,7 +335,7 @@ export default function Data() {
                         </button>
                         <button
                           type="button"
-                          onClick={showNextImage}
+                          onClick={(event) => { event.stopPropagation(); showNextImage() }}
                           className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-gray-950/80 text-white backdrop-blur-sm transition hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
                           aria-label="Next interface image"
                         >
@@ -347,7 +373,7 @@ export default function Data() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-2">
+                <div className="lg:col-span-3">
                   <p className="leading-relaxed text-gray-300">{selectedTool.summary}</p>
                   <h3 className="mt-7 text-sm font-semibold uppercase tracking-[0.18em] text-gray-400">
                     Current capabilities
@@ -369,6 +395,28 @@ export default function Data() {
               </div>
             </div>
           </div>
+
+          {imageExpanded && (
+            <div
+              className="fixed inset-0 z-[110] flex items-center justify-center overscroll-none bg-black/95 p-4"
+              onMouseDown={(event) => {
+                event.stopPropagation()
+                if (event.target === event.currentTarget) setImageExpanded(false)
+              }}
+            >
+              <button type="button" onClick={() => setImageExpanded(false)} aria-label="Close fullscreen image" className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-gray-900/80 text-gray-300 backdrop-blur-sm transition hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"><X size={24} /></button>
+
+              {selectedTool.images.length > 1 && (
+                <>
+                  <button type="button" onClick={showPreviousImage} aria-label="Previous interface image" className="absolute left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-gray-900/80 text-white backdrop-blur-sm transition hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 sm:left-7"><ChevronLeft size={28} /></button>
+                  <button type="button" onClick={showNextImage} aria-label="Next interface image" className="absolute right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-gray-900/80 text-white backdrop-blur-sm transition hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 sm:right-7"><ChevronRight size={28} /></button>
+                </>
+              )}
+
+              <img src={selectedTool.images[activeImage]} alt={`${selectedTool.title} interface fullscreen view ${activeImage + 1}`} className="max-h-[92vh] max-w-[94vw] object-contain" />
+              <span className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full border border-white/15 bg-gray-900/80 px-4 py-2 text-sm text-gray-200 backdrop-blur-sm">{activeImage + 1} / {selectedTool.images.length}</span>
+            </div>
+          )}
         </div>
       )}
       </div>

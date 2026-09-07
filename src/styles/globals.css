@@ -83,3 +83,52 @@ body {
 .tab-content {
   transition: all 0.3s ease;
 }
+
+@keyframes rocket-smoke-dispersal {
+  0% {
+    opacity: 0;
+    transform: translateY(-3px) scale(0.35);
+  }
+  25% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(18px) scale(1.75);
+  }
+}
+
+@keyframes rocket-exhaust-line {
+  0% { opacity: 0; stroke-dashoffset: 24; }
+  30% { opacity: 1; }
+  100% { opacity: 0.85; stroke-dashoffset: 0; }
+}
+
+.rocket-smoke {
+  animation: rocket-smoke-dispersal 1000ms ease-out forwards;
+}
+
+.rocket-smoke-delay-1 {
+  animation-delay: 70ms;
+}
+
+.rocket-smoke-delay-2 {
+  animation-delay: 130ms;
+}
+
+.roadmap-rocket path:first-child {
+  opacity: 0;
+}
+
+.roadmap-rocket-launching path:first-child {
+  stroke-dasharray: 24;
+  animation: rocket-exhaust-line 240ms ease-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rocket-smoke,
+  .roadmap-rocket-launching path:first-child {
+    animation: none;
+  }
+
+}

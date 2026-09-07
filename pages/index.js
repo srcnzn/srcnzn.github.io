@@ -1,6 +1,7 @@
 import { Navbar } from "../src/components/Navbar"
 import Home from "../src/components/Home"
 import Studies from "../src/components/Studies"
+import FlightHeritage from "../src/components/FlightHeritage"
 import Data from "../src/components/Data"
 import Experimental from "../src/components/Experimental"
 import Publications from "../src/components/Publications"
@@ -17,6 +18,10 @@ export default function Page() {
 
       <section id="studies" className="section-container bg-gradient-to-br from-purple-900 to-gray-900">
         <Studies />
+      </section>
+
+      <section id="flight-heritage" className="section-container">
+        <FlightHeritage />
       </section>
 
       <section id="publications" className="section-container">

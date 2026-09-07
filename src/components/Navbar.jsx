@@ -6,6 +6,7 @@ import { FileText } from "lucide-react"
 const navItems = [
   { id: "home", label: "Home" },
   { id: "studies", label: "Research" },
+  { id: "flight-heritage", label: "Missions" },
   { id: "publications", label: "Publications" },
   { id: "characterization", label: "Expertise" },
   { id: "data", label: "Software" },

@@ -65,7 +65,7 @@ export default function About({ showHeading = true }) {
           </div>
 
           <div>
-            <div className="max-w-4xl space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+            <div className="max-w-4xl space-y-4 text-left text-base leading-relaxed text-stone-800 sm:text-justify sm:text-lg [text-align-last:left]">
               <p>
                 Hello! I am an experimental physicist working at the intersection of photovoltaic device physics and space
                 environments. My research examines how emerging solar-cell technologies perform and degrade under

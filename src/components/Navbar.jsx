@@ -126,11 +126,13 @@ export function Navbar() {
 
           <div className="hidden lg:block">
             <a
-              href="/cv"
-              className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 px-4 py-2 font-medium text-white shadow-lg ring-2 ring-orange-400/20 transition-all duration-300 hover:scale-105 hover:from-orange-600 hover:to-red-600 hover:shadow-xl hover:ring-orange-400/40"
+              href="/SercanOzenCV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 rounded-[4px] border border-orange-400 px-3 py-1.5 text-sm font-medium text-orange-300 transition-colors duration-200 hover:bg-orange-400/10 hover:text-orange-200 focus:outline-none focus:ring-1 focus:ring-orange-400/60"
             >
-              <FileText size={18} />
-              My CV
+              <FileText size={16} />
+              View CV
             </a>
           </div>
 
@@ -165,11 +167,13 @@ export function Navbar() {
 
             <div className="mt-3 border-t border-gray-700 pt-3">
               <a
-                href="/cv"
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 px-4 py-3 font-medium text-white shadow-lg"
+                href="/SercanOzenCV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full items-center justify-center gap-1.5 rounded-[4px] border border-orange-400 px-3 py-2 text-sm font-medium text-orange-300 transition-colors duration-200 hover:bg-orange-400/10 hover:text-orange-200 focus:outline-none focus:ring-1 focus:ring-orange-400/60"
               >
-                <FileText size={18} />
-                My CV
+                <FileText size={16} />
+                View CV
               </a>
             </div>
           </div>

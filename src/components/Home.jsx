@@ -12,7 +12,7 @@ export default function Home() {
       <div className="mx-auto w-full max-w-7xl text-center text-white">
         <div className={`transition-transform duration-700 ease-in-out ${aboutOpen ? "-translate-y-3" : ""}`}>
           <h1 className="mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-5xl font-bold text-transparent md:text-6xl lg:text-7xl">
-            Sercan Ozen
+            Sercan Özen
           </h1>
           <p className={`text-xl text-gray-300 transition-[margin] duration-700 md:text-2xl ${aboutOpen ? "mb-5" : "mb-8"}`}>Doctoral Researcher in Physics</p>
         </div>

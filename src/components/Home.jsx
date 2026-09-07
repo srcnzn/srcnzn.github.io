@@ -66,9 +66,9 @@ export default function Home() {
 
         {!aboutOpen && <button
           type="button"
-          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+          onClick={() => document.getElementById("studies")?.scrollIntoView({ behavior: "smooth" })}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce rounded-full p-3 text-gray-400 transition hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
-          aria-label="Scroll to About Me"
+          aria-label="Scroll to Research"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

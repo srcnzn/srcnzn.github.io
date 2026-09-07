@@ -1,6 +1,5 @@
 import { Navbar } from "../src/components/Navbar"
 import Home from "../src/components/Home"
-import About from "../src/components/About"
 import Studies from "../src/components/Studies"
 import Data from "../src/components/Data"
 import Experimental from "../src/components/Experimental"
@@ -14,10 +13,6 @@ export default function Page() {
 
       <section id="home" className="section-container bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
         <Home />
-      </section>
-
-      <section id="about" className="section-container" style={{ minHeight: "auto" }}>
-        <About />
       </section>
 
       <section id="studies" className="section-container bg-gradient-to-br from-purple-900 to-gray-900">

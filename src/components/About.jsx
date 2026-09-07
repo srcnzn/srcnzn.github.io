@@ -27,7 +27,7 @@ const journey = [
   },
 ]
 
-export default function About() {
+export default function About({ showHeading = true }) {
   return (
     <div className="relative w-full overflow-hidden bg-gradient-to-br from-stone-300 via-[#c7c1b8] to-zinc-400 py-16 text-stone-900 sm:py-20">
       <div className="pointer-events-none absolute inset-0 opacity-20">
@@ -36,10 +36,12 @@ export default function About() {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div className="mb-9">
-          <h2 className="text-4xl font-bold tracking-tight text-stone-950 sm:text-5xl">About Me</h2>
-          <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-amber-700 to-stone-600" />
-        </div>
+        {showHeading && (
+          <div className="mb-9">
+            <h2 className="text-4xl font-bold tracking-tight text-stone-950 sm:text-5xl">About Me</h2>
+            <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-amber-700 to-stone-600" />
+          </div>
+        )}
 
         <div className="grid items-center gap-8 sm:grid-cols-[180px_minmax(0,1fr)] lg:gap-12">
           <div className="mx-auto w-full max-w-[180px] sm:mx-0">

@@ -1,13 +1,28 @@
 "use client"
 
+import { useState } from "react"
+import About from "./About"
+
 export default function Home() {
+  const [aboutOpen, setAboutOpen] = useState(false)
+
   return (
-    <div className="min-h-screen w-full flex items-center justify-center px-6">
-      <div className="max-w-7xl mx-auto text-center text-white">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-          Sercan Ozen
-        </h1>
-        <p className="text-xl md:text-2xl mb-8 text-gray-300">Doctoral Researcher in Physics</p>
+    <div className="flex min-h-screen w-full items-center justify-center px-6 py-24">
+      <div className="mx-auto w-full max-w-7xl text-center text-white">
+        <div className={`transition-transform duration-700 ease-in-out ${aboutOpen ? "-translate-y-3" : ""}`}>
+          <h1 className="mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-5xl font-bold text-transparent md:text-6xl lg:text-7xl">
+            Sercan Ozen
+          </h1>
+          <p className={`text-xl text-gray-300 transition-[margin] duration-700 md:text-2xl ${aboutOpen ? "mb-5" : "mb-8"}`}>Doctoral Researcher in Physics</p>
+        </div>
+
+        <div className={`grid overflow-hidden transition-[grid-template-rows,opacity,margin] duration-700 ease-in-out ${aboutOpen ? "mb-8 grid-rows-[1fr] opacity-100" : "pointer-events-none mb-0 grid-rows-[0fr] opacity-0"}`} aria-hidden={!aboutOpen}>
+          <div className="min-h-0 overflow-hidden rounded-3xl shadow-2xl shadow-black/25">
+            <About />
+          </div>
+        </div>
+
+        <div className={`transition-transform duration-700 ease-in-out ${aboutOpen ? "translate-y-1" : ""}`}>
         <p className="text-lg max-w-3xl mx-auto mb-10 text-gray-400">
           Exploring single- and multi-junction perovskite solar cells for space: from radiation hardness and LILT to
           performance benchmarking and mechanical tests.
@@ -31,6 +46,15 @@ export default function Home() {
           >
             Contact Me
           </button>
+          <button
+            type="button"
+            onClick={() => setAboutOpen((open) => !open)}
+            aria-expanded={aboutOpen}
+            className="rounded-lg border border-blue-300/70 bg-blue-300/10 px-6 py-3 font-medium text-blue-100 transition-all duration-300 hover:scale-105 hover:bg-blue-300/20"
+          >
+            {aboutOpen ? "Close About Me" : "About Me"}
+          </button>
+        </div>
         </div>
 
         <button

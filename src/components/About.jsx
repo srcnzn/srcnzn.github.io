@@ -5,13 +5,13 @@ const journey = [
     period: "2017",
     title: "B.Sc. in Physics",
     organization: "Izmir Institute of Technology",
-    detail: "Foundation in experimental physics, optics, and materials science.",
+    detail: "Built a foundation in semiconductor and device physics, supported by experimental physics, optics, electronics, and materials science.",
   },
   {
     period: "2017–2020",
     title: "M.Sc. in Photonics Science & Engineering",
     organization: "Izmir Institute of Technology",
-    detail: "Focused on the optical and electronic properties of cesium lead halide perovskites.",
+    detail: "Synthesized and modified perovskite materials while investigating their optical and electronic properties.",
   },
   {
     period: "2018–2023",
@@ -23,7 +23,7 @@ const journey = [
     period: "2023–Present",
     title: "Ph.D. & Doctoral Researcher",
     organization: "University of Potsdam",
-    detail: "Investigating photovoltaic device physics, stability, and degradation under space-relevant conditions.",
+    detail: "Developing and characterizing photovoltaic devices for extreme environments, from laboratory testing to spaceflight integration.",
   },
 ]
 
@@ -67,14 +67,16 @@ export default function About({ showHeading = true }) {
           <div>
             <div className="max-w-4xl space-y-4 text-left text-base leading-relaxed text-stone-800 sm:text-justify sm:text-lg [text-align-last:left]">
               <p>
-                Hello! I am an experimental physicist working at the intersection of photovoltaic device physics and space
-                environments. My research examines how emerging solar-cell technologies perform and degrade under
-                space-relevant and other extreme conditions—and how their resilience can be improved.
+                Hello! I am an experimental physicist working on photovoltaic devices for space and other extreme
+                environments. My research examines how single- and multi-junction solar cells perform, degrade, and
+                recover under conditions including low-intensity and low-temperature operation, thermal cycling, and
+                proton irradiation.
               </p>
               <p>
-                I combine hands-on device fabrication with scientific programming: building measurement workflows,
-                developing analysis tools, and using electrical and optical diagnostics to translate complex device
-                behavior into clear physical insight.
+                My work spans the full experimental chain, from device fabrication and advanced electrical and
+                optoelectronic characterization to measurement automation, data analysis, encapsulation, and spaceflight
+                integration. I have contributed directly to two orbital solar-cell payloads, translating laboratory-scale
+                device research into systems capable of operating beyond terrestrial conditions.
               </p>
             </div>
           </div>
